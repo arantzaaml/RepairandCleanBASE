@@ -1,0 +1,84 @@
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const navigation = [
+    { name: "Inicio", href: "/" },
+    { name: "Servicios", href: "/services" },
+    { name: "Galería", href: "/gallery" },
+    { name: "Contacto", href: "/contact" },
+  ];
+
+  const isActive = (href: string) => location.pathname === href;
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-glass backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="text-2xl font-bold text-primary">
+            Repair & Clean
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={cn(
+                  "px-4 py-2 rounded-lg text-sm font-medium transition-smooth",
+                  isActive(item.href)
+                    ? "bg-primary text-primary-foreground"
+                    : "text-foreground hover:bg-secondary"
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-foreground hover:text-primary transition-smooth"
+              aria-expanded="false"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden bg-background border-t border-border">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "block px-4 py-3 rounded-lg text-base font-medium transition-smooth",
+                    isActive(item.href)
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:bg-secondary"
+                  )}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
