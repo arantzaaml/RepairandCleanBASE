@@ -84,7 +84,7 @@ const Contact = () => {
                     className="min-h-32 focus:ring-2 focus:ring-primary"
                     required
                   />
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" variant="cta" size="lg" className="w-full">
                     Enviar solicitud de presupuesto
                   </Button>
                 </form>

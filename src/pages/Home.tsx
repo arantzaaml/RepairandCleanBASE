@@ -64,7 +64,7 @@ const Home = () => {
             Servicios profesionales de reparación, limpieza, fontanería y reformas para hacer de tu casa el hogar perfecto.
           </p>
           <Link to="/contact">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 shadow-elegant">
+            <Button variant="cta" size="lg" className="text-lg px-8 py-4">
               Solicita tu presupuesto
             </Button>
           </Link>
@@ -188,7 +188,7 @@ const Home = () => {
                     className="min-h-32 focus:ring-2 focus:ring-primary"
                     required
                   />
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" variant="cta" size="lg" className="w-full">
                     Enviar mensaje
                   </Button>
                 </form>
