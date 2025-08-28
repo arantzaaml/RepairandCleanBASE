@@ -6,11 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import heroImage from "@/assets/hero-image.jpg";
-import kitchenBefore from "@/assets/kitchen-before.jpg";
-import kitchenAfter from "@/assets/kitchen-after.jpg";
-import bathroomBefore from "@/assets/bathroom-before.jpg";
-import bathroomAfter from "@/assets/bathroom-after.jpg";
+import heroImage from "@/assets/hero-professional.jpg";
+import kitchenBefore from "@/assets/kitchen-before-professional.jpg";
+import kitchenAfter from "@/assets/kitchen-after-professional.jpg";
+import bathroomBefore from "@/assets/bathroom-before-professional.jpg";
+import bathroomAfter from "@/assets/bathroom-after-professional.jpg";
 
 const Home = () => {
   const { toast } = useToast();
@@ -131,49 +131,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 bg-secondary/50">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Lo que dicen nuestros clientes
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="shadow-elegant">
-              <CardContent className="p-8">
-                <p className="text-muted-foreground italic mb-4 text-lg">
-                  "¡Increíble servicio! Dejaron mi casa impecable y fueron muy profesionales y amables. 
-                  Los recomiendo sin dudarlo."
-                </p>
-                <p className="text-foreground font-semibold">
-                  — María González
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-elegant">
-              <CardContent className="p-8">
-                <p className="text-muted-foreground italic mb-4 text-lg">
-                  "Tuve una emergencia de fontanería y vinieron en cuestión de minutos. Solucionaron el 
-                  problema rápido y de forma eficaz. Un servicio de 10."
-                </p>
-                <p className="text-foreground font-semibold">
-                  — Carlos Rodríguez
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Preview Section */}
       <section className="py-16 bg-secondary/50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Nuestros Proyectos
+              Antes y Después
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Descubre las increíbles transformaciones que hemos realizado
