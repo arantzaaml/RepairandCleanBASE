@@ -15,29 +15,6 @@ import bathroomAfter from "@/assets/bathroom-after.jpg";
 const Home = () => {
   const { toast } = useToast();
 
-  const services = [
-    {
-      icon: <Wrench className="h-8 w-8" />,
-      title: "Reparación",
-      description: "Solucionamos cualquier avería o desperfecto en tu hogar con profesionalidad y garantía."
-    },
-    {
-      icon: <Sparkles className="h-8 w-8" />,
-      title: "Limpieza",
-      description: "Servicio de limpieza profunda para mantener tu hogar impecable y saludable."
-    },
-    {
-      icon: <Droplets className="h-8 w-8" />,
-      title: "Fontanería",
-      description: "Instalación, reparación y mantenimiento de sistemas de fontanería y plomería."
-    },
-    {
-      icon: <Hammer className="h-8 w-8" />,
-      title: "Reformas",
-      description: "Transformamos espacios completos adaptándolos a tus necesidades y gustos."
-    }
-  ];
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -58,10 +35,10 @@ const Home = () => {
         </div>
         <div className="relative container mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Transforma tu hogar con nosotros
+            Reparación y Limpieza: Soluciones Integrales para Tu Hogar y Negocio
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Servicios profesionales de reparación, limpieza, fontanería y reformas para hacer de tu casa el hogar perfecto.
+            Transformamos espacios con un servicio profesional y de confianza. Nos dedicamos a ti.
           </p>
           <Link to="/contact">
             <Button variant="cta" size="lg" className="text-lg px-8 py-4">
@@ -71,34 +48,77 @@ const Home = () => {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section className="py-16 bg-secondary/50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Una década de experiencia y confianza a tu servicio
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              En Repair and Clean, nuestra misión es simplificar tu vida. Con más de 10 años de experiencia, 
+              hemos construido un equipo de expertos dedicados a ofrecer servicios de la más alta calidad en 
+              limpieza, mantenimiento y reparaciones. Nos enorgullece nuestro trabajo, y tu satisfacción es 
+              nuestro compromiso más importante.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Nuestros Servicios
+              Soluciones a tu medida
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ofrecemos soluciones integrales para todas las necesidades de tu hogar
-            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
-                <CardContent className="p-8 text-center">
-                  <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
+                  <Sparkles className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  Limpieza profesional
+                </h3>
+                <p className="text-muted-foreground">
+                  Mantenemos tus espacios impecables. Ofrecemos limpieza profunda para hogares, oficinas y 
+                  comunidades. Nuestro equipo usa productos de calidad y las mejores técnicas para un resultado brillante.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
+                  <Wrench className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  Mantenimiento de edificios
+                </h3>
+                <p className="text-muted-foreground">
+                  Cuidamos tu propiedad para que no tengas que preocuparte. Nos encargamos de tareas de 
+                  mantenimiento preventivo y correctivo, asegurando que tu edificio o local se mantenga en perfectas condiciones.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
+                  <Hammer className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  Reparaciones y reformas
+                </h3>
+                <p className="text-muted-foreground">
+                  De un simple arreglo a una reforma completa. Nuestro equipo de técnicos calificados puede 
+                  solucionar problemas de fontanería, pintura, electricidad, y más. Devolvemos la vida a tus espacios.
+                </p>
+              </CardContent>
+            </Card>
           </div>
           
           <div className="text-center mt-12">
@@ -107,6 +127,43 @@ const Home = () => {
                 Ver todos los servicios
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-secondary/50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Lo que dicen nuestros clientes
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="shadow-elegant">
+              <CardContent className="p-8">
+                <p className="text-muted-foreground italic mb-4 text-lg">
+                  "¡Increíble servicio! Dejaron mi casa impecable y fueron muy profesionales y amables. 
+                  Los recomiendo sin dudarlo."
+                </p>
+                <p className="text-foreground font-semibold">
+                  — María González
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-elegant">
+              <CardContent className="p-8">
+                <p className="text-muted-foreground italic mb-4 text-lg">
+                  "Tuve una emergencia de fontanería y vinieron en cuestión de minutos. Solucionaron el 
+                  problema rápido y de forma eficaz. Un servicio de 10."
+                </p>
+                <p className="text-foreground font-semibold">
+                  — Carlos Rodríguez
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -154,17 +211,38 @@ const Home = () => {
         </div>
       </section>
 
+      {/* CTA Section */}
+      <section className="py-16 bg-primary/10">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            ¿Listo para un espacio impecable?
+          </h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Contáctanos hoy mismo para obtener un presupuesto gratuito y sin compromiso. 
+            Estamos disponibles 24/7 para atenderte.
+          </p>
+          <Link to="/contact">
+            <Button variant="cta" size="lg" className="text-lg px-8 py-4">
+              Pide tu presupuesto
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       {/* Contact Form Section */}
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-foreground mb-4">
-                Contacta con Nosotros
+                Contáctanos
               </h2>
-              <p className="text-xl text-muted-foreground">
-                Cuéntanos tu proyecto y te daremos un presupuesto sin compromiso
-              </p>
+              <div className="space-y-2 text-muted-foreground mb-6">
+                <p><strong>Teléfono:</strong> 93 380 53 21</p>
+                <p><strong>WhatsApp:</strong> 644 630 831</p>
+                <p><strong>Email:</strong> info@repair-and-clean.com</p>
+                <p><strong>Dirección:</strong> Carrer de la Manigua, 18, Sant Andreu, 08027 Barcelona</p>
+              </div>
             </div>
             
             <Card className="shadow-elegant">
