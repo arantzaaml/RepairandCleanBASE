@@ -9,8 +9,8 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import heroImage from "@/assets/hero-professional.jpg";
 import kitchenBefore from "@/assets/kitchen-before-professional.jpg";
 import kitchenAfter from "@/assets/kitchen-after-professional.jpg";
-import bathroomBefore from "@/assets/bathroom-before-professional.jpg";
-import bathroomAfter from "@/assets/bathroom-after-professional.jpg";
+import facadeBefore from "@/assets/facade-before.jpg";
+import facadeAfter from "@/assets/facade-after.jpg";
 
 const Home = () => {
   const { toast } = useToast();
@@ -143,26 +143,60 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-foreground">Cocina Moderna</h3>
-              <BeforeAfterSlider 
-                beforeImage={kitchenBefore}
-                afterImage={kitchenAfter}
-                alt="Reforma de cocina"
-                className="h-64 md:h-96"
-              />
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-foreground">Baño de Lujo</h3>
-              <BeforeAfterSlider 
-                beforeImage={bathroomBefore}
-                afterImage={bathroomAfter}
-                alt="Renovación de baño"
-                className="h-64 md:h-96"
-              />
-            </div>
-          </div>
+          <Card className="max-w-4xl mx-auto overflow-hidden shadow-elegant mb-12">
+            <CardContent className="p-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-8 bg-secondary/30">
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    Restauración completa de fachada en Eixample
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Rescate completo de la seguridad y estética de un edificio histórico del Plan Cerdà.
+                  </p>
+                  
+                  <div className="space-y-4 text-sm">
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-2">El Desafío: Rescatar la Seguridad y Estética de un Edificio Histórico</h4>
+                      <p className="text-muted-foreground">
+                        El edificio en Carrer de Llanca, 5, en el corazón del Eixample de Barcelona, nos presentó un doble desafío. Como parte del Plan Cerdà y catalogado como patrimonio, el proyecto requería una intervención delicada para resolver problemas de seguridad urgentes, como desprendimientos en balcones y molduras, sin comprometer su valor histórico.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-2">Nuestra Solución: Precisión y Respeto por el Patrimonio</h4>
+                      <p className="text-muted-foreground">
+                        En REPAIR AND CLEAN, diseñamos un plan de trabajo detallado para abordar la seguridad y estética de la fachada. Restauramos completamente los balcones y reconstruimos las molduras decorativas sobre los dinteles. Utilizamos materiales de alta calidad y técnicas que garantizan la durabilidad de los acabados.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-2">El Resultado: Seguridad, Belleza y Confianza</h4>
+                      <p className="text-muted-foreground">
+                        El resultado es una fachada que no solo cumple con los estándares de seguridad y protección, sino que también resplandece, honrando su rica historia en el Eixample. Este proyecto es un claro ejemplo de nuestra capacidad para ofrecer soluciones a medida.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-4">
+                  <BeforeAfterSlider 
+                    beforeImage={facadeBefore}
+                    afterImage={facadeAfter}
+                    alt="Restauración de fachada en Eixample - Antes: Desprendimientos y graffiti. Después: Fachada restaurada y protegida, respetando el patrimonio."
+                    className="h-64 md:h-96 lg:h-full"
+                  />
+                  <div className="mt-4 text-center">
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium">Antes:</span> Desprendimientos y graffiti en la fachada de Eixample.
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium">Después:</span> Fachada restaurada y protegida, respetando el patrimonio.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
           
           <div className="text-center">
             <Link to="/gallery">

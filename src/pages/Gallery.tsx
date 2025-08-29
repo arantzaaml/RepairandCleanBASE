@@ -8,8 +8,6 @@ import bathroomBefore from "@/assets/bathroom-before.jpg";
 import bathroomAfter from "@/assets/bathroom-after.jpg";
 import livingBefore from "@/assets/living-before.jpg";
 import livingAfter from "@/assets/living-after.jpg";
-import facadeBefore from "@/assets/facade-before.jpg";
-import facadeAfter from "@/assets/facade-after.jpg";
 
 const Gallery = () => {
   const projects = [
@@ -36,19 +34,6 @@ const Gallery = () => {
       afterImage: livingAfter,
       category: "Reformas",
       duration: "1 semana"
-    },
-    {
-      title: "Restauración completa de fachada en Eixample",
-      description: "Rescate completo de la seguridad y estética de un edificio histórico del Plan Cerdà. Restauración de balcones, reconstrucción de molduras decorativas, tratamiento anti-graffiti y pintura con materiales de alta calidad respetando el patrimonio arquitectónico de Barcelona.",
-      beforeImage: facadeBefore,
-      afterImage: facadeAfter,
-      category: "Reformas",
-      duration: "3 semanas",
-      details: {
-        challenge: "El edificio en Carrer de Llanca, 5, en el corazón del Eixample de Barcelona, nos presentó un doble desafío. Como parte del Plan Cerdà y catalogado como patrimonio, el proyecto requería una intervención delicada para resolver problemas de seguridad urgentes, como desprendimientos en balcones y molduras, sin comprometer su valor histórico.",
-        solution: "En REPAIR AND CLEAN, diseñamos un plan de trabajo detallado para abordar la seguridad y estética de la fachada. Restauramos completamente los balcones y reconstruimos las molduras decorativas sobre los dinteles. Utilizamos materiales de alta calidad y técnicas que garantizan la durabilidad de los acabados. Pintamos las barandillas de los balcones con esmalte exterior para prolongar su vida útil. Además, aplicamos tratamientos anti-graffiti en la parte inferior de la fachada para facilitar la limpieza y mantener la estética impecable. El color final de la fachada fue seleccionado de la paleta oficial del Departamento de Patrimonio de la Diputación de Barcelona para asegurar que el resultado fuera lo más similar posible al diseño original del edificio.",
-        result: "El resultado es una fachada que no solo cumple con los estándares de seguridad y protección, sino que también resplandece, honrando su rica historia en el Eixample. Este proyecto es un claro ejemplo de nuestra capacidad para ofrecer soluciones a medida, combinando la experiencia en reformas con un profundo respeto por los edificios que forman parte del patrimonio de nuestra ciudad."
-      }
     }
   ];
 
@@ -90,22 +75,6 @@ const Gallery = () => {
                       <p className="text-muted-foreground mt-2">
                         {project.description}
                       </p>
-                      {project.details && (
-                        <div className="mt-4 space-y-3 text-sm">
-                          <div>
-                            <h4 className="font-semibold text-foreground mb-1">El Desafío: Rescatar la Seguridad y Estética de un Edificio Histórico</h4>
-                            <p className="text-muted-foreground">{project.details.challenge}</p>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-foreground mb-1">Nuestra Solución: Precisión y Respeto por el Patrimonio</h4>
-                            <p className="text-muted-foreground">{project.details.solution}</p>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-foreground mb-1">El Resultado: Seguridad, Belleza y Confianza</h4>
-                            <p className="text-muted-foreground">{project.details.result}</p>
-                          </div>
-                        </div>
-                      )}
                     </div>
                     <div className="flex flex-col text-sm text-muted-foreground">
                       <span className="font-medium">Categoría: {project.category}</span>
