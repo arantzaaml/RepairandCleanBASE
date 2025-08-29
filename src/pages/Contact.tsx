@@ -4,16 +4,61 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "El nombre y apellido son obligatorios (mínimo 2 caracteres).",
+  }),
+  phone: z.string().regex(/^\d{9}$/, {
+    message: "El teléfono debe tener exactamente 9 dígitos.",
+  }),
+  email: z.string().email({
+    message: "Por favor, introduce un correo electrónico válido.",
+  }),
+  address: z.string().min(10, {
+    message: "La dirección debe incluir el código postal.",
+  }),
+  description: z.string().min(10, {
+    message: "Por favor, describe tu proyecto con más detalle (mínimo 10 caracteres).",
+  }),
+});
 
 const Contact = () => {
   const { toast } = useToast();
+  
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+      description: "",
+    },
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Mensaje enviado correctamente",
-      description: "Hemos recibido tu solicitud. Te contactaremos en las próximas 24 horas para ofrecerte un presupuesto personalizado.",
-    });
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      // Simulate sending email to info@repair-and-clean.com
+      console.log("Enviando formulario a info@repair-and-clean.com:", values);
+      
+      toast({
+        title: "¡Solicitud enviada correctamente!",
+        description: "Hemos recibido tu solicitud de presupuesto. Te contactaremos en las próximas 24 horas.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error al enviar",
+        description: "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -46,48 +91,107 @@ const Contact = () => {
                 </p>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input 
-                      placeholder="Tu nombre completo" 
-                      required 
-                      className="focus:ring-2 focus:ring-primary"
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Nombre y Apellido *</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Tu nombre completo" 
+                              {...field}
+                              className="focus:ring-2 focus:ring-primary"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <Input 
-                      type="email" 
-                      placeholder="Tu email" 
-                      required 
-                      className="focus:ring-2 focus:ring-primary"
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Teléfono (España) *</FormLabel>
+                            <FormControl>
+                              <Input 
+                                type="tel" 
+                                placeholder="123456789 (9 dígitos)" 
+                                {...field}
+                                className="focus:ring-2 focus:ring-primary"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Correo Electrónico *</FormLabel>
+                            <FormControl>
+                              <Input 
+                                type="email" 
+                                placeholder="ejemplo@dominio.com" 
+                                {...field}
+                                className="focus:ring-2 focus:ring-primary"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <FormField
+                      control={form.control}
+                      name="address"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Dirección con Código Postal *</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Calle, número, ciudad, código postal" 
+                              {...field}
+                              className="focus:ring-2 focus:ring-primary"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
-                  <Input 
-                    type="tel" 
-                    placeholder="Tu teléfono" 
-                    required 
-                    className="focus:ring-2 focus:ring-primary"
-                  />
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Tipo de servicio
-                    </label>
-                    <select className="w-full p-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary">
-                      <option value="">Selecciona un servicio</option>
-                      <option value="reparacion">Reparación</option>
-                      <option value="limpieza">Limpieza</option>
-                      <option value="fontaneria">Fontanería</option>
-                      <option value="reformas">Reformas</option>
-                      <option value="multiple">Múltiples servicios</option>
-                    </select>
-                  </div>
-                  <Textarea 
-                    placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
-                    className="min-h-32 focus:ring-2 focus:ring-primary"
-                    required
-                  />
-                  <Button type="submit" variant="cta" size="lg" className="w-full">
-                    Enviar solicitud de presupuesto
-                  </Button>
-                </form>
+                    
+                    <FormField
+                      control={form.control}
+                      name="description"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Descripción del Proyecto *</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
+                              className="min-h-32 focus:ring-2 focus:ring-primary"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <Button type="submit" variant="cta" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
+                      {form.formState.isSubmitting ? "Enviando..." : "Enviar solicitud de presupuesto"}
+                    </Button>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
 

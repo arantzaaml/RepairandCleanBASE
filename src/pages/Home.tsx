@@ -244,29 +244,16 @@ const Home = () => {
             
             <Card className="shadow-elegant">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input 
-                      placeholder="Tu nombre" 
-                      required 
-                      className="focus:ring-2 focus:ring-primary"
-                    />
-                    <Input 
-                      type="email" 
-                      placeholder="Tu email" 
-                      required 
-                      className="focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-                  <Textarea 
-                    placeholder="Describe tu proyecto..." 
-                    className="min-h-32 focus:ring-2 focus:ring-primary"
-                    required
-                  />
-                  <Button type="submit" variant="cta" size="lg" className="w-full">
-                    Enviar mensaje
-                  </Button>
-                </form>
+                <div className="text-center">
+                  <p className="text-muted-foreground mb-6">
+                    ¿Quieres un presupuesto personalizado? Completa nuestro formulario detallado.
+                  </p>
+                  <Link to="/contact">
+                    <Button variant="cta" size="lg" className="w-full">
+                      Ir al formulario de presupuesto
+                    </Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           </div>
