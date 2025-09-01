@@ -127,6 +127,7 @@ const Contact = () => {
                           <FormControl>
                             <Input 
                               placeholder="Tu nombre completo" 
+                              name="name"
                               {...field}
                               className="focus:ring-2 focus:ring-primary"
                             />
@@ -144,9 +145,10 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Teléfono (España) *</FormLabel>
                             <FormControl>
-                              <Input 
+                               <Input 
                                 type="tel" 
                                 placeholder="123456789 (9 dígitos)" 
+                                name="phone"
                                 {...field}
                                 className="focus:ring-2 focus:ring-primary"
                               />
@@ -163,9 +165,10 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Correo Electrónico *</FormLabel>
                             <FormControl>
-                              <Input 
+                               <Input 
                                 type="email" 
                                 placeholder="ejemplo@dominio.com" 
+                                name="email"
                                 {...field}
                                 className="focus:ring-2 focus:ring-primary"
                               />
@@ -183,8 +186,9 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Código Postal *</FormLabel>
                           <FormControl>
-                            <Input 
+                             <Input 
                               placeholder="Ej: 08027 (5 dígitos)" 
+                              name="postalCode"
                               {...field}
                               className="focus:ring-2 focus:ring-primary"
                             />
@@ -201,9 +205,10 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Descripción del Proyecto *</FormLabel>
                           <FormControl>
-                            <Textarea 
+                             <Textarea 
                               placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
                               className="min-h-32 focus:ring-2 focus:ring-primary"
+                              name="description"
                               {...field}
                             />
                           </FormControl>
