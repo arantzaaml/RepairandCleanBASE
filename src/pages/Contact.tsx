@@ -114,7 +114,6 @@ const Contact = () => {
                     data-netlify="true"
                     name="contact"
                     method="POST"
-                    action="/contacto"
                   >
                     {/* Hidden input for Netlify Forms */}
                     <input type="hidden" name="form-name" value="contact" />
