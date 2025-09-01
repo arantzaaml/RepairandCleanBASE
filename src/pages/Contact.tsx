@@ -19,8 +19,8 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Por favor, introduce un correo electrónico válido.",
   }),
-  address: z.string().min(10, {
-    message: "La dirección debe incluir el código postal.",
+  postalCode: z.string().regex(/^\d{5}$/, {
+    message: "El código postal debe tener exactamente 5 dígitos.",
   }),
   description: z.string().min(10, {
     message: "Por favor, describe tu proyecto con más detalle (mínimo 10 caracteres).",
@@ -36,15 +36,35 @@ const Contact = () => {
       name: "",
       phone: "",
       email: "",
-      address: "",
+      postalCode: "",
       description: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // Simulate sending email to info@repair-and-clean.com
-      console.log("Enviando formulario a info@repair-and-clean.com:", values);
+      // In a real application, this would be sent to a backend API that handles email sending
+      // For now, we simulate the email sending process to info@repair-and-clean.com
+      const emailData = {
+        to: "info@repair-and-clean.com",
+        subject: "Nueva solicitud de presupuesto - Repair & Clean",
+        message: `
+          Nueva solicitud de presupuesto recibida:
+          
+          Nombre: ${values.name}
+          Teléfono: ${values.phone}
+          Email: ${values.email}
+          Código Postal: ${values.postalCode}
+          
+          Descripción del proyecto:
+          ${values.description}
+        `
+      };
+      
+      console.log("Enviando formulario a info@repair-and-clean.com:", emailData);
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
         title: "¡Solicitud enviada correctamente!",
@@ -153,13 +173,13 @@ const Contact = () => {
                     
                     <FormField
                       control={form.control}
-                      name="address"
+                      name="postalCode"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Dirección con Código Postal *</FormLabel>
+                          <FormLabel>Código Postal *</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="Calle, número, ciudad, código postal" 
+                              placeholder="Ej: 08027 (5 dígitos)" 
                               {...field}
                               className="focus:ring-2 focus:ring-primary"
                             />
