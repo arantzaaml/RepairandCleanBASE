@@ -43,35 +43,31 @@ const Contact = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // In a real application, this would be sent to a backend API that handles email sending
-      // For now, we simulate the email sending process to info@repair-and-clean.com
-      const emailData = {
-        to: "info@repair-and-clean.com",
-        subject: "Nueva solicitud de presupuesto - Repair & Clean",
-        message: `
-          Nueva solicitud de presupuesto recibida:
-          
-          Nombre: ${values.name}
-          Teléfono: ${values.phone}
-          Email: ${values.email}
-          Código Postal: ${values.postalCode}
-          
-          Descripción del proyecto:
-          ${values.description}
-        `
-      };
-      
-      console.log("Enviando formulario a info@repair-and-clean.com:", emailData);
-      
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "¡Solicitud enviada correctamente!",
-        description: "Hemos recibido tu solicitud de presupuesto. Te contactaremos en las próximas 24 horas.",
+      // Create form data for Netlify Forms submission
+      const formData = new FormData();
+      formData.append("form-name", "contact");
+      formData.append("name", values.name);
+      formData.append("phone", values.phone);
+      formData.append("email", values.email);
+      formData.append("postalCode", values.postalCode);
+      formData.append("description", values.description);
+
+      // Submit to Netlify Forms
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
       });
-      
-      form.reset();
+
+      if (response.ok) {
+        toast({
+          title: "¡Solicitud enviada correctamente!",
+          description: "Hemos recibido tu solicitud de presupuesto. Te contactaremos en las próximas 24 horas.",
+        });
+        form.reset();
+      } else {
+        throw new Error("Error en el envío");
+      }
     } catch (error) {
       toast({
         title: "Error al enviar",
@@ -112,7 +108,16 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form 
+                    onSubmit={form.handleSubmit(onSubmit)} 
+                    className="space-y-6"
+                    data-netlify="true"
+                    name="contact"
+                    method="POST"
+                  >
+                    {/* Hidden input for Netlify Forms */}
+                    <input type="hidden" name="form-name" value="contact" />
+                    
                     <FormField
                       control={form.control}
                       name="name"
