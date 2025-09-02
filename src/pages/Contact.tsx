@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { useRef } from 'react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -30,7 +31,25 @@ const formSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
+  
+  useEffect(() => {
+    const { status } = router.query;
+    if (status === 'success') {
+      toast({
+        title: "¡Solicitud enviada correctamente!",
+        description: "Hemos recibido tu solicitud de presupuesto. Te contactaremos en las próximas 24 horas.",
+      });
+      router.push('/contact', undefined, { shallow: true });
+    } else if (status === 'error') {
+      toast({
+        title: "Error al enviar",
+        description: "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
+        variant: "destructive",
+      });
+      router.push('/contact', undefined, { shallow: true });
+    }
+  }, [router.query, toast, router]);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,11 +65,7 @@ const Contact = () => {
   const onSubmit = () => {
     // La validación de useForm se encarga de que los datos sean correctos.
     // El formulario se enviará de forma nativa.
-    // Solo mostramos un mensaje para que el usuario sepa que algo está sucediendo.
-    toast({
-      title: "Enviando...",
-      description: "La solicitud de presupuesto se está enviando. Por favor, espera.",
-    });
+    // El toast se mostrará cuando se redirija la página con un estado de éxito o error.
   };
 
   return (
@@ -90,7 +105,6 @@ const Contact = () => {
                     name="contact"
                     method="POST"
                     action="https://script.google.com/macros/s/AKfycbyUYDikN_qure3KM-ZLMYsHQbHCMOgcDi7vIGd5Zq6gtpolY8xL0xkF9zAfYNXVbhU6/exec"
-                    ref={formRef}
                   >
                     
                     <FormField
