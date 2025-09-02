@@ -43,20 +43,18 @@ const Contact = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // Create form data for Netlify Forms submission
+      // Creamos un objeto de FormData con los datos del formulario
       const formData = new FormData();
-      formData.append("form-name", "contact");
       formData.append("name", values.name);
       formData.append("phone", values.phone);
       formData.append("email", values.email);
       formData.append("postalCode", values.postalCode);
       formData.append("description", values.description);
 
-      // Submit to Netlify Forms
-      const response = await fetch("/", {
+      // Envia los datos directamente al script de Google Apps
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyUYDikN_qure3KM-ZLMYsHQbHCMOgcDi7vIGd5Zq6gtpolY8xL0xkF9zAfYNXVbhU6/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
       });
 
       if (response.ok) {
@@ -113,7 +111,6 @@ const Contact = () => {
                     className="space-y-6"
                     name="contact"
                     method="POST"
-                    action="https://script.google.com/macros/s/AKfycbyUYDikN_qure3KM-ZLMYsHQbHCMOgcDi7vIGd5Zq6gtpolY8xL0xkF9zAfYNXVbhU6/exec"
                   >
                     
                     <FormField
@@ -184,12 +181,12 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Código Postal *</FormLabel>
                           <FormControl>
-                             <Input 
-                              placeholder="Ej: 08027 (5 dígitos)" 
-                              name="postalCode"
-                              {...field}
-                              className="focus:ring-2 focus:ring-primary"
-                            />
+                               <Input 
+                                placeholder="Ej: 08027 (5 dígitos)" 
+                                name="postalCode"
+                                {...field}
+                                className="focus:ring-2 focus:ring-primary"
+                              />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -203,12 +200,12 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Descripción del Proyecto *</FormLabel>
                           <FormControl>
-                             <Textarea 
-                              placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
-                              className="min-h-32 focus:ring-2 focus:ring-primary"
-                              name="description"
-                              {...field}
-                            />
+                               <Textarea 
+                                placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
+                                className="min-h-32 focus:ring-2 focus:ring-primary"
+                                name="description"
+                                {...field}
+                              />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
