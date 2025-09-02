@@ -42,21 +42,11 @@ const Contact = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      // El formulario se enviará automáticamente con el action de HTML.
-      // Solo mostramos un mensaje de éxito.
-      toast({
-        title: "¡Solicitud enviada correctamente!",
-        description: "Hemos recibido tu solicitud de presupuesto. Te contactaremos en las próximas 24 horas.",
-      });
-      form.reset();
-    } catch (error) {
-      toast({
-        title: "Error al enviar",
-        description: "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
-        variant: "destructive",
-      });
-    }
+    // Aquí no se necesita un fetch, el formulario HTML se encargará del envío.
+    toast({
+      title: "Enviando...",
+      description: "La solicitud de presupuesto se está enviando. Por favor, espera.",
+    });
   };
 
   return (
