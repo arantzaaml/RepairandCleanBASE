@@ -111,12 +111,10 @@ const Contact = () => {
                   <form 
                     onSubmit={form.handleSubmit(onSubmit)} 
                     className="space-y-6"
-                    data-netlify="true"
                     name="contact"
                     method="POST"
+                    action="https://script.google.com/macros/s/AKfycbyUYDikN_qure3KM-ZLMYsHQbHCMOgcDi7vIGd5Zq6gtpolY8xL0xkF9zAfYNXVbhU6/exec"
                   >
-                    {/* Hidden input for Netlify Forms */}
-                    <input type="hidden" name="form-name" value="contact" />
                     
                     <FormField
                       control={form.control}
