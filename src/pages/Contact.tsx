@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -31,23 +31,25 @@ const formSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
-  const searchParams = useSearchParams();
+  const router = useRouter();
   
   useEffect(() => {
-    const status = searchParams.get('status');
+    const { status } = router.query;
     if (status === 'success') {
       toast({
         title: "¡Solicitud enviada correctamente!",
         description: "Hemos recibido tu solicitud de presupuesto. Te contactaremos en las próximas 24 horas.",
       });
+      router.push('/contact', undefined, { shallow: true });
     } else if (status === 'error') {
       toast({
         title: "Error al enviar",
         description: "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
         variant: "destructive",
       });
+      router.push('/contact', undefined, { shallow: true });
     }
-  }, [searchParams, toast]);
+  }, [router.query, toast, router]);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
