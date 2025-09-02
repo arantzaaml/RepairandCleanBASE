@@ -43,18 +43,14 @@ const Contact = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // Creamos un objeto de FormData con los datos del formulario
-      const formData = new FormData();
-      formData.append("name", values.name);
-      formData.append("phone", values.phone);
-      formData.append("email", values.email);
-      formData.append("postalCode", values.postalCode);
-      formData.append("description", values.description);
-
       // Envia los datos directamente al script de Google Apps
       const response = await fetch("https://script.google.com/macros/s/AKfycbyUYDikN_qure3KM-ZLMYsHQbHCMOgcDi7vIGd5Zq6gtpolY8xL0xkF9zAfYNXVbhU6/exec", {
         method: "POST",
-        body: formData,
+        mode: "no-cors", // Esto es importante para que la solicitud funcione
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
       });
 
       if (response.ok) {
