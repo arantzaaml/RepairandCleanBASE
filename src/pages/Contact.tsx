@@ -8,8 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRef } from 'react';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -31,25 +30,7 @@ const formSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
-  const router = useRouter();
-  
-  useEffect(() => {
-    const { status } = router.query;
-    if (status === 'success') {
-      toast({
-        title: "¡Solicitud enviada correctamente!",
-        description: "Hemos recibido tu solicitud de presupuesto. Te contactaremos en las próximas 24 horas.",
-      });
-      router.push('/contact', undefined, { shallow: true });
-    } else if (status === 'error') {
-      toast({
-        title: "Error al enviar",
-        description: "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
-        variant: "destructive",
-      });
-      router.push('/contact', undefined, { shallow: true });
-    }
-  }, [router.query, toast, router]);
+  const formRef = useRef<HTMLFormElement>(null);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,8 +45,11 @@ const Contact = () => {
 
   const onSubmit = () => {
     // La validación de useForm se encarga de que los datos sean correctos.
-    // El formulario se enviará de forma nativa.
-    // El toast se mostrará cuando se redirija la página con un estado de éxito o error.
+    // El formulario se enviará de forma nativa a Formspree.
+    toast({
+      title: "Enviando...",
+      description: "La solicitud de presupuesto se está enviando. Por favor, espera.",
+    });
   };
 
   return (
@@ -104,7 +88,8 @@ const Contact = () => {
                     className="space-y-6"
                     name="contact"
                     method="POST"
-                    action="https://script.google.com/macros/s/AKfycbyUYDikN_qure3KM-ZLMYsHQbHCMOgcDi7vIGd5Zq6gtpolY8xL0xkF9zAfYNXVbhU6/exec"
+                    action="https://formspree.io/f/mzzajqdp"
+                    ref={formRef}
                   >
                     
                     <FormField
@@ -282,7 +267,7 @@ const Contact = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.5168050965317!2d2.1884405763945535!3d41.40118679361816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fe5781a985%3A0x6e2671e21b033e07!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1693655383321!5m2!1sen!2ses"
+                      src="http://googleusercontent.com/maps/1"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
