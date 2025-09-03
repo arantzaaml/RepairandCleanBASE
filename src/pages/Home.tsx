@@ -308,7 +308,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.5168050965317!2d2.1884405763945535!3d41.40118679361816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fe5781a985%3A0x6e2671e21b033e07!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1693655383321!5m2!1sen!2ses1"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.5168050965317!2d2.1884405763945535!3d41.40118679361816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fe5781a985%3A0x6e2671e21b033e07!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1693655383321!5m2!1sen!2ses2"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
