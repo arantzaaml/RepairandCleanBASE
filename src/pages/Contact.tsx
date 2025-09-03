@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { useRef } from 'react';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -29,9 +28,6 @@ const formSchema = z.object({
 });
 
 const Contact = () => {
-  const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
-  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,15 +38,6 @@ const Contact = () => {
       description: "",
     },
   });
-
-  const onSubmit = () => {
-    // La validación de useForm se encarga de que los datos sean correctos.
-    // El formulario se enviará de forma nativa a Formspree.
-    toast({
-      title: "Enviando...",
-      description: "La solicitud de presupuesto se está enviando. Por favor, espera.",
-    });
-  };
 
   return (
     <div className="min-h-screen bg-background pt-20">
@@ -84,12 +71,10 @@ const Contact = () => {
               <CardContent>
                 <Form {...form}>
                   <form 
-                    onSubmit={form.handleSubmit(onSubmit)} 
                     className="space-y-6"
                     name="contact"
                     method="POST"
                     action="https://formspree.io/f/mzzajqdp"
-                    ref={formRef}
                   >
                     
                     <FormField
@@ -191,8 +176,8 @@ const Contact = () => {
                       )}
                     />
                     
-                    <Button type="submit" variant="cta" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
-                      {form.formState.isSubmitting ? "Enviando..." : "Enviar solicitud de presupuesto"}
+                    <Button type="submit" variant="cta" size="lg" className="w-full">
+                      Enviar solicitud de presupuesto
                     </Button>
                   </form>
                 </Form>
