@@ -107,7 +107,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  <img src="/reforms.jpg" alt="Reformas" className="h-20 w-auto" />
+                  <img src="/image_b3f9a2.jpg" alt="Reformas" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Reformas y Rehabilitaciones</CardTitle>
               </CardHeader>
@@ -122,7 +122,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  <img src="/repairs.jpg" alt="Reparaciones" className="h-20 w-auto" />
+                  <img src="/image_b3ea9c.jpg" alt="Reparaciones" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Reparaciones del Hogar</CardTitle>
               </CardHeader>
@@ -137,7 +137,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  <img src="/cleaning.jpg" alt="Limpieza" className="h-20 w-auto" />
+                  <img src="/image_b381dd.jpg" alt="Limpieza" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Limpieza Integral</CardTitle>
               </CardHeader>
@@ -375,7 +375,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.5168050965317!2d2.1884405763945535!3d41.40118679361816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fe5781a985%3A0x6e2671e21b033e07!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1693655383321!5m2!1sen!2ses8"
+                      src="https://maps.google.com/maps?q=Carrer%20de%20la%20Manigua%2C%2018%2C%20Sant%20Andreu%2C%2008027%20Barcelona&output=embed8"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
