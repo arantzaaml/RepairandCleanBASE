@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { useRef } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -29,6 +30,7 @@ const formSchema = z.object({
 
 const Home = () => {
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,6 +42,15 @@ const Home = () => {
       description: "",
     },
   });
+
+  const onSubmit = () => {
+    // La validación de useForm se encarga de que los datos sean correctos.
+    // El formulario se enviará de forma nativa a Formspree.
+    toast({
+      title: "Enviando...",
+      description: "La solicitud de presupuesto se está enviando. Por favor, espera.",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -193,10 +204,12 @@ const Home = () => {
               <CardContent>
                 <Form {...form}>
                   <form 
+                    onSubmit={form.handleSubmit(onSubmit)} 
                     className="space-y-6"
                     name="contact"
                     method="POST"
                     action="https://formspree.io/f/mzzajqdp"
+                    ref={formRef}
                   >
                     
                     <FormField
@@ -298,8 +311,8 @@ const Home = () => {
                       )}
                     />
                     
-                    <Button type="submit" variant="cta" size="lg" className="w-full">
-                      Enviar solicitud de presupuesto
+                    <Button type="submit" variant="cta" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
+                      {form.formState.isSubmitting ? "Enviando..." : "Enviar solicitud de presupuesto"}
                     </Button>
                   </form>
                 </Form>
@@ -374,7 +387,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.8315106560413!2d2.188734915664322!3d41.40578847926207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3311f42e2b9%3A0x67c2e39c4a796a5d!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona%2C%20Spain!5e0!3m2!1sen!2sus!4v1628173456789!5m2!1sen!2sus"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.052680413063!2d2.193231475960488!3d41.41168989518593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4b3d8d641d407%3A0x6b9d62d3a3721345!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1ses!2ses!4v1709848805608!5m2!1ses!2ses"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
