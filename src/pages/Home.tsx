@@ -3,8 +3,79 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "El nombre y apellido son obligatorios (mínimo 2 caracteres).",
+  }),
+  phone: z.string().regex(/^\d{9}$/, {
+    message: "El teléfono debe tener exactamente 9 dígitos.",
+  }),
+  email: z.string().email({
+    message: "Por favor, introduce un correo electrónico válido.",
+  }),
+  postalCode: z.string().regex(/^\d{5}$/, {
+    message: "El código postal debe tener exactamente 5 dígitos.",
+  }),
+  description: z.string().min(10, {
+    message: "Por favor, describe tu proyecto con más detalle (mínimo 10 caracteres).",
+  }),
+});
 
 const Home = () => {
+  const { toast } = useToast();
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      postalCode: "",
+      description: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch("https://formspree.io/f/mzzajqdp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Formulario enviado",
+          description: "Nos pondremos en contacto contigo lo antes posible.",
+          duration: 5000,
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error al enviar el formulario",
+          description: "Hubo un problema. Por favor, inténtalo de nuevo más tarde.",
+          variant: "destructive",
+          duration: 5000,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error de red",
+        description: "No se pudo conectar al servidor. Revisa tu conexión a internet.",
+        variant: "destructive",
+        duration: 5000,
+      });
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -155,88 +226,84 @@ const Home = () => {
                 </p>
               </CardHeader>
               <CardContent>
-                <form 
-                  className="space-y-6"
-                  name="contact"
-                  method="POST"
-                  action="https://formspree.io/f/mzzajqdp"
-                >
-                  
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
-                      Nombre y Apellido *
-                    </label>
-                    <Input 
-                      id="name"
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
                       name="name"
-                      placeholder="Tu nombre completo" 
-                      required
-                      className="focus:ring-2 focus:ring-primary"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Nombre y Apellido *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Tu nombre completo" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">
-                        Teléfono (España) *
-                      </label>
-                      <Input 
-                        id="phone"
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
                         name="phone"
-                        type="tel" 
-                        placeholder="123456789 (9 dígitos)" 
-                        required
-                        pattern="^\d{9}$"
-                        className="focus:ring-2 focus:ring-primary"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Teléfono (España) *</FormLabel>
+                            <FormControl>
+                              <Input type="tel" placeholder="123456789" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
-                        Correo Electrónico *
-                      </label>
-                      <Input 
-                        id="email"
+                      <FormField
+                        control={form.control}
                         name="email"
-                        type="email" 
-                        placeholder="ejemplo@dominio.com" 
-                        required
-                        className="focus:ring-2 focus:ring-primary"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Correo Electrónico *</FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="ejemplo@dominio.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
                     </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="postalCode" className="block text-sm font-medium text-foreground mb-1">
-                      Código Postal *
-                    </label>
-                    <Input 
-                      id="postalCode"
+                    <FormField
+                      control={form.control}
                       name="postalCode"
-                      placeholder="Ej: 08027 (5 dígitos)" 
-                      required
-                      pattern="^\d{5}$"
-                      className="focus:ring-2 focus:ring-primary"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Código Postal *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Ej: 08027" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-foreground mb-1">
-                      Descripción del Proyecto *
-                    </label>
-                    <Textarea 
-                      id="description"
+                    <FormField
+                      control={form.control}
                       name="description"
-                      placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
-                      className="min-h-32 focus:ring-2 focus:ring-primary"
-                      required
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Descripción del Proyecto *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)"
+                              className="min-h-32"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
-                  
-                  <Button type="submit" variant="cta" size="lg" className="w-full">
-                    Enviar solicitud de presupuesto
-                  </Button>
-                </form>
+                    <Button type="submit" variant="cta" size="lg" className="w-full">
+                      Enviar solicitud de presupuesto
+                    </Button>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
 
@@ -308,7 +375,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.5168050965317!2d2.1884405763945535!3d41.40118679361816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fe5781a985%3A0x6e2671e21b033e07!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1693655383321!5m2!1sen!2ses2"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.5168050965317!2d2.1884405763945535!3d41.40118679361816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fe5781a985%3A0x6e2671e21b033e07!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1693655383321!5m2!1sen!2ses5"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
