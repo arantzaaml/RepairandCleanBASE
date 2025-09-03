@@ -8,7 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { useRef } from "react";
+
+// Importa las imágenes del directorio public
+import reformsImage from "/public/reforms.jpg";
+import repairsImage from "/public/repairs.jpg";
+import cleaningImage from "/public/cleaning.jpg";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -30,7 +34,6 @@ const formSchema = z.object({
 
 const Home = () => {
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,15 +45,6 @@ const Home = () => {
       description: "",
     },
   });
-
-  const onSubmit = () => {
-    // La validación de useForm se encarga de que los datos sean correctos.
-    // El formulario se enviará de forma nativa a Formspree.
-    toast({
-      title: "Enviando...",
-      description: "La solicitud de presupuesto se está enviando. Por favor, espera.",
-    });
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -83,7 +77,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  {/* Icon or image for Reforms */}
+                  <img src={reformsImage} alt="Reformas" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Reformas y Rehabilitaciones</CardTitle>
               </CardHeader>
@@ -98,7 +92,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  {/* Icon or image for Repairs */}
+                  <img src={repairsImage} alt="Reparaciones" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Reparaciones del Hogar</CardTitle>
               </CardHeader>
@@ -113,7 +107,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  {/* Icon or image for Cleaning */}
+                  <img src={cleaningImage} alt="Limpieza" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Limpieza Integral</CardTitle>
               </CardHeader>
@@ -202,120 +196,88 @@ const Home = () => {
                 </p>
               </CardHeader>
               <CardContent>
-                <Form {...form}>
-                  <form 
-                    onSubmit={form.handleSubmit(onSubmit)} 
-                    className="space-y-6"
-                    name="contact"
-                    method="POST"
-                    action="https://formspree.io/f/mzzajqdp"
-                    ref={formRef}
-                  >
-                    
-                    <FormField
-                      control={form.control}
+                <form 
+                  className="space-y-6"
+                  name="contact"
+                  method="POST"
+                  action="https://formspree.io/f/mzzajqdp"
+                >
+                  
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
+                      Nombre y Apellido *
+                    </label>
+                    <Input 
+                      id="name"
                       name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Nombre y Apellido *</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Tu nombre completo" 
-                              name="name"
-                              {...field}
-                              className="focus:ring-2 focus:ring-primary"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+                      placeholder="Tu nombre completo" 
+                      required
+                      className="focus:ring-2 focus:ring-primary"
                     />
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">
+                        Teléfono (España) *
+                      </label>
+                      <Input 
+                        id="phone"
                         name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Teléfono (España) *</FormLabel>
-                            <FormControl>
-                               <Input 
-                                type="tel" 
-                                placeholder="123456789 (9 dígitos)" 
-                                name="phone"
-                                {...field}
-                                className="focus:ring-2 focus:ring-primary"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Correo Electrónico *</FormLabel>
-                            <FormControl>
-                               <Input 
-                                type="email" 
-                                placeholder="ejemplo@dominio.com" 
-                                name="email"
-                                {...field}
-                                className="focus:ring-2 focus:ring-primary"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
+                        type="tel" 
+                        placeholder="123456789 (9 dígitos)" 
+                        required
+                        pattern="^\d{9}$"
+                        className="focus:ring-2 focus:ring-primary"
                       />
                     </div>
                     
-                    <FormField
-                      control={form.control}
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
+                        Correo Electrónico *
+                      </label>
+                      <Input 
+                        id="email"
+                        name="email"
+                        type="email" 
+                        placeholder="ejemplo@dominio.com" 
+                        required
+                        className="focus:ring-2 focus:ring-primary"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="postalCode" className="block text-sm font-medium text-foreground mb-1">
+                      Código Postal *
+                    </label>
+                    <Input 
+                      id="postalCode"
                       name="postalCode"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Código Postal *</FormLabel>
-                          <FormControl>
-                               <Input 
-                                placeholder="Ej: 08027 (5 dígitos)" 
-                                name="postalCode"
-                                {...field}
-                                className="focus:ring-2 focus:ring-primary"
-                              />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+                      placeholder="Ej: 08027 (5 dígitos)" 
+                      required
+                      pattern="^\d{5}$"
+                      className="focus:ring-2 focus:ring-primary"
                     />
-                    
-                    <FormField
-                      control={form.control}
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="description" className="block text-sm font-medium text-foreground mb-1">
+                      Descripción del Proyecto *
+                    </label>
+                    <Textarea 
+                      id="description"
                       name="description"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Descripción del Proyecto *</FormLabel>
-                          <FormControl>
-                               <Textarea 
-                                placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
-                                className="min-h-32 focus:ring-2 focus:ring-primary"
-                                name="description"
-                                {...field}
-                              />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+                      placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
+                      className="min-h-32 focus:ring-2 focus:ring-primary"
+                      required
                     />
-                    
-                    <Button type="submit" variant="cta" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
-                      {form.formState.isSubmitting ? "Enviando..." : "Enviar solicitud de presupuesto"}
-                    </Button>
-                  </form>
-                </Form>
+                  </div>
+                  
+                  <Button type="submit" variant="cta" size="lg" className="w-full">
+                    Enviar solicitud de presupuesto
+                  </Button>
+                </form>
               </CardContent>
             </Card>
 
@@ -387,7 +349,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.052680413063!2d2.193231475960488!3d41.41168989518593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4b3d8d641d407%3A0x6b9d62d3a3721345!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1ses!2ses!4v1709848805608!5m2!1ses!2ses"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.5168050965317!2d2.1884405763945535!3d41.40118679361816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fe5781a985%3A0x6e2671e21b033e07!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1693655383321!5m2!1sen!2ses0"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
