@@ -50,7 +50,7 @@ const Home = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
@@ -79,9 +79,9 @@ const Home = () => {
               Una década de experiencia y confianza a tu servicio
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              En Repair and Clean, nuestra misión es simplificar tu vida. Con más de 10 años de experiencia, 
-              hemos construido un equipo de expertos dedicados a ofrecer servicios de la más alta calidad en 
-              limpieza, mantenimiento y reparaciones. Nos enorgullece nuestro trabajo, y tu satisfacción es 
+              En Repair and Clean, nuestra misión es simplificar tu vida. Con más de 10 años de experiencia,
+              hemos construido un equipo de expertos dedicados a ofrecer servicios de la más alta calidad en
+              limpieza, mantenimiento y reparaciones. Nos enorgullece nuestro trabajo, y tu satisfacción es
               nuestro compromiso más importante.
             </p>
           </div>
@@ -107,7 +107,7 @@ const Home = () => {
                   Limpieza profesional
                 </h3>
                 <p className="text-muted-foreground">
-                  Mantenemos tus espacios impecables. Ofrecemos limpieza profunda para hogares, oficinas y 
+                  Mantenemos tus espacios impecables. Ofrecemos limpieza profunda para hogares, oficinas y
                   comunidades. Nuestro equipo usa productos de calidad y las mejores técnicas para un resultado brillante.
                 </p>
               </CardContent>
@@ -122,7 +122,7 @@ const Home = () => {
                   Mantenimiento de edificios
                 </h3>
                 <p className="text-muted-foreground">
-                  Cuidamos tu propiedad para que no tengas que preocuparte. Nos encargamos de tareas de 
+                  Cuidamos tu propiedad para que no tengas que preocuparte. Nos encargamos de tareas de
                   mantenimiento preventivo y correctivo, asegurando que tu edificio o local se mantenga en perfectas condiciones.
                 </p>
               </CardContent>
@@ -137,7 +137,7 @@ const Home = () => {
                   Reparaciones y reformas
                 </h3>
                 <p className="text-muted-foreground">
-                  De un simple arreglo a una reforma completa. Nuestro equipo de técnicos calificados puede 
+                  De un simple arreglo a una reforma completa. Nuestro equipo de técnicos calificados puede
                   solucionar problemas de fontanería, pintura, electricidad, y más. Devolvemos la vida a tus espacios.
                 </p>
               </CardContent>
@@ -202,7 +202,7 @@ const Home = () => {
                 </div>
                 
                 <div className="p-4">
-                  <BeforeAfterSlider 
+                  <BeforeAfterSlider
                     beforeImage={facadeBefore}
                     afterImage={facadeAfter}
                     alt="Restauración de fachada en Eixample - Antes: Desprendimientos y graffiti. Después: Fachada restaurada y protegida, respetando el patrimonio."
@@ -238,7 +238,7 @@ const Home = () => {
             ¿Listo para un espacio impecable?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Contáctanos hoy mismo para obtener un presupuesto gratuito y sin compromiso. 
+            Contáctanos hoy mismo para obtener un presupuesto gratuito y sin compromiso.
             Estamos disponibles 24/7 para atenderte.
           </p>
           <a href="#formulario-presupuesto">
@@ -275,7 +275,7 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <Form {...form}>
-                  <form 
+                  <form
                     className="space-y-6"
                     name="contact"
                     method="POST"
@@ -289,8 +289,8 @@ const Home = () => {
                         <FormItem>
                           <FormLabel>Nombre y Apellido *</FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="Tu nombre completo" 
+                            <Input
+                              placeholder="Tu nombre completo"
                               name="name"
                               {...field}
                               className="focus:ring-2 focus:ring-primary"
@@ -309,9 +309,9 @@ const Home = () => {
                           <FormItem>
                             <FormLabel>Teléfono (España) *</FormLabel>
                             <FormControl>
-                               <Input 
-                                type="tel" 
-                                placeholder="123456789 (9 dígitos)" 
+                               <Input
+                                type="tel"
+                                placeholder="123456789 (9 dígitos)"
                                 name="phone"
                                 {...field}
                                 className="focus:ring-2 focus:ring-primary"
@@ -329,9 +329,9 @@ const Home = () => {
                           <FormItem>
                             <FormLabel>Correo Electrónico *</FormLabel>
                             <FormControl>
-                               <Input 
-                                type="email" 
-                                placeholder="ejemplo@dominio.com" 
+                               <Input
+                                type="email"
+                                placeholder="ejemplo@dominio.com"
                                 name="email"
                                 {...field}
                                 className="focus:ring-2 focus:ring-primary"
@@ -350,8 +350,8 @@ const Home = () => {
                         <FormItem>
                           <FormLabel>Código Postal *</FormLabel>
                           <FormControl>
-                               <Input 
-                                placeholder="Ej: 08027 (5 dígitos)" 
+                               <Input
+                                placeholder="Ej: 08027 (5 dígitos)"
                                 name="postalCode"
                                 {...field}
                                 className="focus:ring-2 focus:ring-primary"
@@ -369,8 +369,8 @@ const Home = () => {
                         <FormItem>
                           <FormLabel>Descripción del Proyecto *</FormLabel>
                           <FormControl>
-                               <Textarea 
-                                placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)" 
+                               <Textarea
+                                placeholder="Describe tu proyecto en detalle... (¿Qué necesitas? ¿Cuándo te gustaría realizarlo? ¿Presupuesto aproximado?)"
                                 className="min-h-32 focus:ring-2 focus:ring-primary"
                                 name="description"
                                 {...field}
@@ -457,7 +457,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="http://googleusercontent.com/maps/1"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.835472401878!2d2.193233815340051!3d41.41113037926107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4b87e2b8c5e9f%3A0x6b4c3e387e7d9b9c!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona%2C%20Spain!5e0!3m2!1sen!2sus!4v1662365449293!5m2!1sen!2sus"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
