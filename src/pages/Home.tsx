@@ -3,41 +3,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "El nombre y apellido son obligatorios (mínimo 2 caracteres).",
-  }),
-  phone: z.string().regex(/^\d{9}$/, {
-    message: "El teléfono debe tener exactamente 9 dígitos.",
-  }),
-  email: z.string().email({
-    message: "Por favor, introduce un correo electrónico válido.",
-  }),
-  postalCode: z.string().regex(/^\d{5}$/, {
-    message: "El código postal debe tener exactamente 5 dígitos.",
-  }),
-  description: z.string().min(10, {
-    message: "Por favor, describe tu proyecto con más detalle (mínimo 10 caracteres).",
-  }),
-});
+// Importing images from the public directory
+import reformsImage from "/public/reforms.jpg";
+import repairsImage from "/public/repairs.jpg";
+import cleaningImage from "/public/cleaning.jpg";
 
 const Home = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      phone: "",
-      email: "",
-      postalCode: "",
-      description: "",
-    },
-  });
-
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -69,7 +41,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  {/* Icon or image for Reforms */}
+                  <img src={reformsImage} alt="Reformas" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Reformas y Rehabilitaciones</CardTitle>
               </CardHeader>
@@ -84,7 +56,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  {/* Icon or image for Repairs */}
+                  <img src={repairsImage} alt="Reparaciones" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Reparaciones del Hogar</CardTitle>
               </CardHeader>
@@ -99,7 +71,7 @@ const Home = () => {
             <Card className="text-center p-6 shadow-soft">
               <CardHeader>
                 <div className="flex justify-center mb-4">
-                  {/* Icon or image for Cleaning */}
+                  <img src={cleaningImage} alt="Limpieza" className="h-20 w-auto" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">Limpieza Integral</CardTitle>
               </CardHeader>
@@ -341,7 +313,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.2081521798544!2d2.189569075726243!3d41.411641771295245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f8b50f7893%3A0x6b2e1f486a6350e!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1ses!2ses!4v1700684693457!5m2!1ses!2ses"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.830911571431!2d2.1818296766073163!3d41.40277869345388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2c5a2c2c2c3%3A0x6a2c0c0c0c0c0c0c!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona!5e0!3m2!1sen!2ses!4v1687610487000!5m2!1sen!2ses"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
