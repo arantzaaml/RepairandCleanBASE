@@ -12,7 +12,6 @@ const Navbar = () => {
     { name: "Inicio", href: "/" },
     { name: "Servicios", href: "/services" },
     { name: "Galería", href: "/gallery" },
-    { name: "Contacto", href: "/contact" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
