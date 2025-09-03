@@ -1,20 +1,13 @@
-import { Link } from "react-router-dom";
-import { Wrench, Sparkles, Droplets, Hammer, MapPin, Phone, Mail, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import heroImage from "@/assets/hero-professional.jpg";
-import kitchenBefore from "@/assets/kitchen-before-professional.jpg";
-import kitchenAfter from "@/assets/kitchen-after-professional.jpg";
-import facadeBefore from "@/assets/facade-before.jpg";
-import facadeAfter from "@/assets/facade-after.jpg";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -35,6 +28,8 @@ const formSchema = z.object({
 });
 
 const Home = () => {
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,218 +44,140 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-hero-gradient opacity-80"></div>
-        </div>
-        <div className="relative container mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Reparación y Limpieza: Soluciones Integrales para Tu Hogar y Negocio
+      <section className="py-20 md:py-32 bg-hero-gradient text-center text-white">
+        <div className="container mx-auto px-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+            Transforma tu Hogar con Expertos en Reparaciones
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Transformamos espacios con un servicio profesional y de confianza. Nos dedicamos a ti.
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+            Desde reformas integrales hasta limpiezas especializadas, ofrecemos soluciones de alta calidad para cada rincón de tu casa.
           </p>
-          <a href="#formulario-presupuesto">
-            <Button variant="cta" size="lg" className="text-lg px-8 py-4">
-              Solicita tu presupuesto
-            </Button>
-          </a>
+          <Button variant="cta" size="lg" className="hover:scale-105 transition-transform">
+            <a href="#solicitar-presupuesto">Solicita tu presupuesto</a>
+          </Button>
         </div>
       </section>
 
-      {/* About Us Section */}
-      <section className="py-16 bg-secondary/50">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
-              Una década de experiencia y confianza a tu servicio
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              En Repair and Clean, nuestra misión es simplificar tu vida. Con más de 10 años de experiencia, 
-              hemos construido un equipo de expertos dedicados a ofrecer servicios de la más alta calidad en 
-              limpieza, mantenimiento y reparaciones. Nos enorgullece nuestro trabajo, y tu satisfacción es 
-              nuestro compromiso más importante.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-16">
+      {/* Services Overview Section */}
+      <section className="py-16 bg-muted/20" id="servicios-principales">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Soluciones a tu medida
-            </h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Nuestros Servicios Principales</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Descubre cómo podemos ayudarte a mantener y mejorar tu hogar con nuestros servicios más populares.
+            </p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
-              <CardContent className="p-8 text-center">
-                <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
-                  <Sparkles className="h-8 w-8" />
+            {/* Service Card 1 */}
+            <Card className="text-center p-6 shadow-soft">
+              <CardHeader>
+                <div className="flex justify-center mb-4">
+                  {/* Icon or image for Reforms */}
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Limpieza profesional
-                </h3>
+                <CardTitle className="text-xl font-semibold text-foreground">Reformas y Rehabilitaciones</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <p className="text-muted-foreground">
-                  Mantenemos tus espacios impecables. Ofrecemos limpieza profunda para hogares, oficinas y 
-                  comunidades. Nuestro equipo usa productos de calidad y las mejores técnicas para un resultado brillante.
+                  Transformamos tus espacios con proyectos a medida, desde cocinas hasta baños y rehabilitaciones completas.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
-              <CardContent className="p-8 text-center">
-                <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
-                  <Wrench className="h-8 w-8" />
+            {/* Service Card 2 */}
+            <Card className="text-center p-6 shadow-soft">
+              <CardHeader>
+                <div className="flex justify-center mb-4">
+                  {/* Icon or image for Repairs */}
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Mantenimiento de edificios
-                </h3>
+                <CardTitle className="text-xl font-semibold text-foreground">Reparaciones del Hogar</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <p className="text-muted-foreground">
-                  Cuidamos tu propiedad para que no tengas que preocuparte. Nos encargamos de tareas de 
-                  mantenimiento preventivo y correctivo, asegurando que tu edificio o local se mantenga en perfectas condiciones.
+                  Soluciones rápidas y eficientes para fontanería, electricidad y cualquier avería que necesites.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
-              <CardContent className="p-8 text-center">
-                <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
-                  <Hammer className="h-8 w-8" />
+            {/* Service Card 3 */}
+            <Card className="text-center p-6 shadow-soft">
+              <CardHeader>
+                <div className="flex justify-center mb-4">
+                  {/* Icon or image for Cleaning */}
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Reparaciones y reformas
-                </h3>
+                <CardTitle className="text-xl font-semibold text-foreground">Limpieza Integral</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <p className="text-muted-foreground">
-                  De un simple arreglo a una reforma completa. Nuestro equipo de técnicos calificados puede 
-                  solucionar problemas de fontanería, pintura, electricidad, y más. Devolvemos la vida a tus espacios.
+                  Servicios de limpieza profunda y especializada para que tu casa brille en cada rincón.
                 </p>
               </CardContent>
             </Card>
           </div>
-          
-          <div className="text-center mt-12">
-            <Link to="/services">
-              <Button variant="outline" size="lg">
-                Ver todos los servicios
-              </Button>
-            </Link>
+          <div className="text-center mt-10">
+            <Button variant="outline" size="lg">
+              <a href="/servicios">Ver todos los servicios</a>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Gallery Preview Section */}
+      {/* Testimonials Section */}
       <section className="py-16 bg-secondary/50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Antes y Después
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Lo que dicen nuestros clientes
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Descubre las increíbles transformaciones que hemos realizado
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Más de 10 años de experiencia y clientes satisfechos en Barcelona.
             </p>
           </div>
-          
-          <Card className="max-w-4xl mx-auto overflow-hidden shadow-elegant mb-12">
-            <CardContent className="p-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="p-8 bg-secondary/30">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
-                    Restauración completa de fachada en Eixample
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Rescate completo de la seguridad y estética de un edificio histórico del Plan Cerdà.
-                  </p>
-                  
-                  <div className="space-y-4 text-sm">
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-2">El Desafío: Rescatar la Seguridad y Estética de un Edificio Histórico</h4>
-                      <p className="text-muted-foreground">
-                        El edificio en Carrer de Llanca, 5, en el corazón del Eixample de Barcelona, nos presentó un doble desafío. Como parte del Plan Cerdà y catalogado como patrimonio, el proyecto requería una intervención delicada para resolver problemas de seguridad urgentes, como desprendimientos en balcones y molduras, sin comprometer su valor histórico.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-2">Nuestra Solución: Precisión y Respeto por el Patrimonio</h4>
-                      <p className="text-muted-foreground">
-                        En REPAIR AND CLEAN, diseñamos un plan de trabajo detallado para abordar la seguridad y estética de la fachada. Restauramos completamente los balcones y reconstruimos las molduras decorativas sobre los dinteles. Utilizamos materiales de alta calidad y técnicas que garantizan la durabilidad de los acabados.
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-2">El Resultado: Seguridad, Belleza y Confianza</h4>
-                      <p className="text-muted-foreground">
-                        El resultado es una fachada que no solo cumple con los estándares de seguridad y protección, sino que también resplandece, honrando su rica historia en el Eixample. Este proyecto es un claro ejemplo de nuestra capacidad para ofrecer soluciones a medida.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="p-4">
-                  <BeforeAfterSlider 
-                    beforeImage={facadeBefore}
-                    afterImage={facadeAfter}
-                    alt="Restauración de fachada en Eixample - Antes: Desprendimientos y graffiti. Después: Fachada restaurada y protegida, respetando el patrimonio."
-                    className="h-64 md:h-96 lg:h-full"
-                  />
-                  <div className="mt-4 text-center">
-                    <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">Antes:</span> Desprendimientos y graffiti en la fachada de Eixample.
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">Después:</span> Fachada restaurada y protegida, respetando el patrimonio.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <div className="text-center">
-            <Link to="/gallery">
-              <Button variant="default" size="lg">
-                Ver galería completa
-              </Button>
-            </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Testimonial Card 1 */}
+            <Card className="p-6 shadow-soft">
+              <p className="text-foreground italic mb-4">
+                "Contraté a Repair & Clean para la reforma de mi baño y el resultado superó mis expectativas. Profesionales, rápidos y con una atención al detalle impecable. ¡Totalmente recomendados!"
+              </p>
+              <p className="font-semibold text-right text-primary">- María G.</p>
+            </Card>
+
+            {/* Testimonial Card 2 */}
+            <Card className="p-6 shadow-soft">
+              <p className="text-foreground italic mb-4">
+                "Necesitaba una reparación urgente en mi sistema de fontanería y vinieron en menos de 2 horas. El técnico fue muy amable y resolvió el problema en un instante. Un servicio de 10."
+              </p>
+              <p className="font-semibold text-right text-primary">- Javier R.</p>
+            </Card>
+
+            {/* Testimonial Card 3 */}
+            <Card className="p-6 shadow-soft">
+              <p className="text-foreground italic mb-4">
+                "La limpieza de mi piso después de la obra fue perfecta. No quedó ni rastro de polvo o escombros. El equipo fue muy profesional y eficiente. Sin duda, volveré a llamarlos."
+              </p>
+              <p className="font-semibold text-right text-primary">- Laura S.</p>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Call to Action Section */}
       <section className="py-16 bg-primary/10">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            ¿Listo para un espacio impecable?
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            ¿Listo para tu proyecto?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Contáctanos hoy mismo para obtener un presupuesto gratuito y sin compromiso. 
-            Estamos disponibles 24/7 para atenderte.
+          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+            Hacemos realidad tus ideas. Pide tu presupuesto ahora y transforma tu hogar.
           </p>
-          <a href="#formulario-presupuesto">
-            <Button variant="cta" size="lg" className="text-lg px-8 py-4">
-              Pide tu presupuesto
-            </Button>
-          </a>
+          <Button variant="cta" size="lg" className="hover:scale-105 transition-transform">
+            <a href="#solicitar-presupuesto">Solicita tu presupuesto</a>
+          </Button>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section id="formulario-presupuesto" className="py-16 bg-secondary/50">
+      {/* Contact Section - Integrated into Home Page */}
+      <section className="py-16" id="solicitar-presupuesto">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Contacta con Nosotros
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              ¿Tienes un proyecto en mente? Cuéntanos tus ideas y te haremos un presupuesto sin compromiso
-            </p>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
             {/* Contact Form */}
@@ -279,7 +196,7 @@ const Home = () => {
                     className="space-y-6"
                     name="contact"
                     method="POST"
-                    action="https://script.google.com/macros/s/AKfycbyUYDikN_qure3KM-ZLMYsHQbHCMOgcDi7vIGd5Zq6gtpolY8xL0xkF9zAfYNXVbhU6/exec"
+                    action="https://formspree.io/f/mzzajqdp"
                   >
                     
                     <FormField
@@ -457,7 +374,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://maps.google.com/maps?q=Carrer%20de%20la%20Manigua%2C%2018%2C%20Sant%20Andreu%2C%2008027%20Barcelona&output=embed"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.8315106560413!2d2.188734915664322!3d41.40578847926207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3311f42e2b9%3A0x67c2e39c4a796a5d!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona%2C%20Spain!5e0!3m2!1sen!2sus!4v1628173456789!5m2!1sen!2sus"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -470,45 +387,6 @@ const Home = () => {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              ¿Por qué elegirnos?
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Experiencia comprobada",
-                description: "Más de 10 años transformando hogares en Barcelona"
-              },
-              {
-                title: "Presupuesto sin compromiso",
-                description: "Evaluación gratuita y presupuesto detallado"
-              },
-              {
-                title: "Garantía total",
-                description: "Todos nuestros trabajos tienen garantía de satisfacción"
-              }
-            ].map((benefit, index) => (
-              <Card key={index} className="text-center shadow-soft">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {benefit.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
