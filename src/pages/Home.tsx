@@ -457,7 +457,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="http://googleusercontent.com/maps/1"
+                      src="https://maps.google.com/maps?q=Carrer%20de%20la%20Manigua%2C%2018%2C%20Sant%20Andreu%2C%2008027%20Barcelona&output=embed"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
