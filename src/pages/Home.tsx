@@ -231,24 +231,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-primary/10">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            ¿Listo para un espacio impecable?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Contáctanos hoy mismo para obtener un presupuesto gratuito y sin compromiso.
-            Estamos disponibles 24/7 para atenderte.
-          </p>
-          <a href="#formulario-presupuesto">
-            <Button variant="cta" size="lg" className="text-lg px-8 py-4">
-              Pide tu presupuesto
-            </Button>
-          </a>
-        </div>
-      </section>
-
       {/* Contact Form Section */}
       <section id="formulario-presupuesto" className="py-16 bg-secondary/50">
         <div className="container mx-auto px-6">
