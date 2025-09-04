@@ -102,9 +102,9 @@ const Services = () => {
                     <span className="text-2xl font-bold text-primary">
                       {service.price}
                     </span>
-                    <Link to="/#formulario-presupuesto">
+                    <a href="/#formulario-presupuesto">
                       <Button>Solicitar presupuesto</Button>
-                    </Link>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -123,9 +123,9 @@ const Services = () => {
             Contacta con nosotros y te ofreceremos una solución adaptada a tus necesidades específicas
           </p>
           <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-            <Link to="/#formulario-presupuesto">
+            <a href="/#formulario-presupuesto">
               <Button size="lg">Contactar ahora</Button>
-            </Link>
+            </a>
             <Link to="/gallery">
               <Button variant="outline" size="lg">Ver trabajos realizados</Button>
             </Link>
