@@ -102,7 +102,7 @@ const Services = () => {
                     <span className="text-2xl font-bold text-primary">
                       {service.price}
                     </span>
-                    <Link to="/contact">
+                    <Link to="/#formulario-presupuesto">
                       <Button>Solicitar presupuesto</Button>
                     </Link>
                   </div>
