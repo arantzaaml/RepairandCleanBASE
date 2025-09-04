@@ -7,53 +7,49 @@ const Services = () => {
   const services = [
     {
       icon: <Wrench className="h-12 w-12" />,
-      title: "Reparación",
-      description: "Solucionamos cualquier avería o desperfecto en tu hogar con profesionalidad y garantía completa.",
+      title: "Mantenimiento Integral y Reparaciones",
+      description: "Nos ocupamos del mantenimiento para prevenir problemas mayores y conservar el valor de su propiedad. Ofrecemos servicios de mantenimiento preventivo y correctivo para asegurar que todo funcione a la perfección.",
       features: [
-        "Reparación de electrodomésticos",
-        "Arreglo de muebles y carpintería",
-        "Sistemas eléctricos",
-        "Reparación de ventanas y puertas",
-        "Mantenimiento general"
+        "Mantenimiento general: cambio de bombillas y reparación de elementos menores",
+        "Mantenimiento de piscinas",
+        "Servicios de climatización",
+        "Limpieza y acondicionamiento de patios y huecos de ascensor"
       ],
       price: "Desde 45€"
     },
     {
       icon: <Sparkles className="h-12 w-12" />,
-      title: "Limpieza",
-      description: "Servicio de limpieza profunda y mantenimiento para mantener tu hogar impecable y saludable.",
+      title: "Limpieza Profesional",
+      description: "Crear un ambiente impecable es nuestra prioridad. Nuestro servicio está diseñado para comunidades, empresas y particulares, utilizando productos y maquinaria especializada que garantiza resultados excepcionales.",
       features: [
-        "Limpieza profunda de hogar",
-        "Limpieza post-obras",
-        "Limpieza de cristales",
-        "Desinfección y sanitización",
-        "Limpieza de tapicerías"
+        "Limpieza de áreas comunes, garajes y trasteros",
+        "Limpieza de cristales y puertas de entrada",
+        "Limpieza de porteros automáticos, buzones y ascensores",
+        "Gestión de residuos y vaciado de papeleras"
       ],
       price: "Desde 25€/hora"
     },
     {
       icon: <Droplets className="h-12 w-12" />,
-      title: "Fontanería",
-      description: "Instalación, reparación y mantenimiento completo de sistemas de fontanería y plomería.",
+      title: "Obras y Reparaciones de Fontanería",
+      description: "Nos especializamos en proyectos que cumplen las expectativas más exigentes, desde una simple reparación hasta una obra completa.",
       features: [
-        "Reparación de fugas",
-        "Instalación de grifos y sanitarios",
-        "Desatasco de tuberías",
-        "Calentadores y calderas",
-        "Revisión preventiva"
+        "Reparación de fugas y desatascos de tuberías",
+        "Instalación de sistemas completos de tuberías y grifos",
+        "Revisión de calentadores y calderas",
+        "Instalación de bombas y sistemas de agua"
       ],
       price: "Desde 60€"
     },
     {
       icon: <Hammer className="h-12 w-12" />,
-      title: "Reformas",
-      description: "Transformamos espacios completos adaptándolos a tus necesidades, gustos y estilo de vida.",
+      title: "Reformas Integrales",
+      description: "Transformamos los espacios para mejorar su funcionalidad, estética y valor. Nos especializamos en proyectos que cumplen las expectativas más exigentes.",
       features: [
-        "Reforma integral de cocinas",
-        "Renovación de baños",
-        "Reforma de salones",
-        "Pintura y decoración",
-        "Cambio de suelos"
+        "Reformas de interiores: baños, cocinas y pisos completos",
+        "Obras de electricidad: instalación y adaptación de sistemas eléctricos",
+        "Reformas de fachadas: solución de humedades, pintura y grietas",
+        "Cambio de suelos y pintura en general"
       ],
       price: "Presupuesto personalizado"
     }
@@ -127,7 +123,7 @@ const Services = () => {
             Contacta con nosotros y te ofreceremos una solución adaptada a tus necesidades específicas
           </p>
           <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-            <Link to="/contact">
+            <Link to="/#formulario-presupuesto">
               <Button size="lg">Contactar ahora</Button>
             </Link>
             <Link to="/gallery">
