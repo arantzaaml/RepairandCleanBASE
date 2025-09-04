@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import ImageLightbox from "@/components/ImageLightbox";
 import heroImage from "@/assets/hero-professional.jpg";
 import kitchenBefore from "@/assets/kitchen-before-professional.jpg";
 import kitchenAfter from "@/assets/kitchen-after-professional.jpg";
@@ -202,18 +203,27 @@ const Home = () => {
                 </div>
                 
                 <div className="p-4">
-                  <BeforeAfterSlider
-                    beforeImage={facadeBefore}
-                    afterImage={facadeAfter}
-                    alt="Restauración de fachada en Eixample - Antes: Desprendimientos y graffiti. Después: Fachada restaurada y protegida, respetando el patrimonio."
-                    className="h-64 md:h-96 lg:h-full"
-                  />
+                  <ImageLightbox
+                    src={facadeAfter}
+                    alt="Restauración de fachada en Eixample - Vista ampliada"
+                    className="block"
+                  >
+                    <BeforeAfterSlider
+                      beforeImage={facadeBefore}
+                      afterImage={facadeAfter}
+                      alt="Restauración de fachada en Eixample - Antes: Estado original del edificio. Después: Fachada completamente renovada."
+                      className="h-64 md:h-96 lg:h-full"
+                    />
+                  </ImageLightbox>
                   <div className="mt-4 text-center">
                     <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">Antes:</span> Desprendimientos y graffiti en la fachada de Eixample.
+                      <span className="font-medium">Antes:</span> Estado original del edificio en Barcelona.
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">Después:</span> Fachada restaurada y protegida, respetando el patrimonio.
+                      <span className="font-medium">Después:</span> Fachada completamente renovada y mejorada.
+                    </p>
+                    <p className="text-xs text-muted-foreground/70 mt-2">
+                      Haz clic para ampliar la imagen
                     </p>
                   </div>
                 </div>
