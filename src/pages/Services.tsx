@@ -102,7 +102,7 @@ const Services = () => {
                     <span className="text-2xl font-bold text-primary">
                       {service.price}
                     </span>
-                    <a href="/#formulario-presupuesto">
+                    <a href="https://repair-and-clean.com/#formulario-presupuesto">
                       <Button>Solicitar presupuesto</Button>
                     </a>
                   </div>
@@ -123,7 +123,7 @@ const Services = () => {
             Contacta con nosotros y te ofreceremos una solución adaptada a tus necesidades específicas
           </p>
           <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-            <a href="/#formulario-presupuesto">
+            <a href="https://repair-and-clean.com/#formulario-presupuesto">
               <Button size="lg">Contactar ahora</Button>
             </a>
             <Link to="/gallery">

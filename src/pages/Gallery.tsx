@@ -103,7 +103,7 @@ const Gallery = () => {
               Estos son solo algunos ejemplos de nuestro trabajo. Cada proyecto es único y se adapta completamente a las necesidades y gustos del cliente.
             </p>
             <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-              <a href="/#formulario-presupuesto">
+              <a href="https://repair-and-clean.com/#formulario-presupuesto">
                 <Button size="lg">Solicita tu presupuesto</Button>
               </a>
               <Link to="/services">
