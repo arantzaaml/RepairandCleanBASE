@@ -73,15 +73,15 @@ const Home = () => {
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
             Transformamos espacios con un servicio profesional y de confianza. Nos dedicamos a ti.
           </p>
-          <Button 
-            variant="cta" 
-            size="lg" 
-            className="text-lg px-8 py-4" 
+          <Button
+            variant="cta"
+            size="lg"
+            className="text-lg px-8 py-4"
             onClick={() => {
-                const formSection = document.getElementById('formulario-presupuesto');
-                if (formSection) {
-                    formSection.scrollIntoView({ behavior: 'smooth' });
-                }
+              document.getElementById('formulario-presupuesto').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
             }}>
             Solicita tu presupuesto
           </Button>
