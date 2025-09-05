@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import { Wrench, Sparkles, Droplets, Hammer, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,6 +37,14 @@ const formSchema = z.object({
 });
 
 const Home = () => {
+  const formRef = useRef(null);
+  
+  const handleScrollToForm = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,11 +73,9 @@ const Home = () => {
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
             Transformamos espacios con un servicio profesional y de confianza. Nos dedicamos a ti.
           </p>
-          <a href="#formulario-presupuesto">
-            <Button variant="cta" size="lg" className="text-lg px-8 py-4">
-              Solicita tu presupuesto
-            </Button>
-          </a>
+          <Button variant="cta" size="lg" className="text-lg px-8 py-4" onClick={handleScrollToForm}>
+            Solicita tu presupuesto
+          </Button>
         </div>
       </section>
 
@@ -242,7 +249,7 @@ const Home = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section id="formulario-presupuesto" className="py-16 bg-secondary/50">
+      <section id="formulario-presupuesto" className="py-16 bg-secondary/50" ref={formRef}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-foreground mb-4">
