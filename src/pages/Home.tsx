@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Wrench, Sparkles, Droplets, Hammer, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,6 +44,23 @@ const Home = () => {
       formRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    const shouldScroll = localStorage.getItem('scrollToForm');
+    
+    if (shouldScroll === 'true') {
+      // Elimina la nota para evitar que se desplace de nuevo
+      localStorage.removeItem('scrollToForm');
+      
+      // Desplazarse al formulario
+      const formSection = document.getElementById('formulario-presupuesto');
+      if (formSection) {
+        setTimeout(() => {
+          formSection.scrollIntoView({ behavior: 'smooth' });
+        }, 50); 
+      }
+    }
+  }, []);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

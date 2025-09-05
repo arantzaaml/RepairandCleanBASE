@@ -1,9 +1,11 @@
 import { Wrench, Sparkles, Droplets, Hammer, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Services = () => {
+  const navigate = useNavigate();
+  
   const services = [
     {
       icon: <Wrench className="h-12 w-12" />,
@@ -104,7 +106,8 @@ const Services = () => {
                     </span>
                     <Button
                       onClick={() => {
-                        window.location.href = 'https://repair-and-clean.com/#formulario-presupuesto';
+                        localStorage.setItem('scrollToForm', 'true');
+                        navigate('/');
                       }}>
                       Solicitar presupuesto
                     </Button>
@@ -129,7 +132,8 @@ const Services = () => {
             <Button 
               size="lg"
               onClick={() => {
-                window.location.href = 'https://repair-and-clean.com/#formulario-presupuesto';
+                localStorage.setItem('scrollToForm', 'true');
+                navigate('/');
               }}>
               Contactar ahora
             </Button>
