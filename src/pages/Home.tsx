@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Wrench, Sparkles, Droplets, Hammer, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -38,6 +38,15 @@ const formSchema = z.object({
 
 const Home = () => {
   const formRef = useRef(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openModal = (imageSrc) => {
+    setSelectedImage(imageSrc);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
   
   const handleScrollToForm = () => {
     if (formRef.current) {
@@ -78,8 +87,9 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center cursor-pointer"
           style={{ backgroundImage: `url(${heroImage})` }}
+          onClick={() => openModal(heroImage)}
         >
           <div className="absolute inset-0 bg-hero-gradient opacity-80"></div>
         </div>
@@ -236,18 +246,14 @@ const Home = () => {
                 </div>
                 
                 <div className="p-4">
-                  <ImageLightbox
-                    src={facadeAfter}
-                    alt="Restauración de fachada en Eixample - Vista ampliada"
-                    className="block"
-                  >
+                  <div className="cursor-pointer" onClick={() => openModal(facadeAfter)}>
                     <BeforeAfterSlider
                       beforeImage={facadeBefore}
                       afterImage={facadeAfter}
                       alt="Restauración de fachada en Eixample - Antes: Estado original del edificio. Después: Fachada completamente renovada."
                       className="h-64 md:h-96 lg:h-full"
                     />
-                  </ImageLightbox>
+                  </div>
                   <div className="mt-4 text-center">
                     <p className="text-sm text-muted-foreground">
                       <span className="font-medium">Antes:</span> Estado original del edificio en Barcelona.
@@ -537,6 +543,33 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {selectedImage && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+          }}
+          onClick={closeModal}
+        >
+          <img 
+            src={selectedImage} 
+            alt="Vista en pantalla completa" 
+            style={{ 
+              maxWidth: '90%', 
+              maxHeight: '90%' 
+            }} 
+          />
+        </div>
+      )}
     </div>
   );
 };
