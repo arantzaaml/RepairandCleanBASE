@@ -246,14 +246,18 @@ const Home = () => {
                 </div>
                 
                 <div className="p-4">
-                  <div className="cursor-pointer" onClick={() => openModal(facadeAfter)}>
-                    <BeforeAfterSlider
-                      beforeImage={facadeBefore}
-                      afterImage={facadeAfter}
-                      alt="Restauración de fachada en Eixample - Antes: Estado original del edificio. Después: Fachada completamente renovada."
-                      className="h-64 md:h-96 lg:h-full"
+                  <ImageLightbox
+                    src={facadeAfter}
+                    alt="Restauración de fachada en Eixample - Vista ampliada"
+                    className="block"
+                  >
+                    <img
+                      src={facadeAfter}
+                      alt="Restauración de fachada en Eixample - Fachada completamente renovada."
+                      className="h-64 md:h-96 lg:h-full w-full object-cover cursor-pointer"
+                      onClick={() => openModal(facadeAfter)}
                     />
-                  </div>
+                  </ImageLightbox>
                   <div className="mt-4 text-center">
                     <p className="text-sm text-muted-foreground">
                       <span className="font-medium">Antes:</span> Estado original del edificio en Barcelona.
