@@ -39,6 +39,7 @@ const formSchema = z.object({
 const Home = () => {
   const formRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const { toast } = useToast();
 
   const openModal = (imageSrc) => {
     setSelectedImage(imageSrc);
@@ -47,31 +48,21 @@ const Home = () => {
   const closeModal = () => {
     setSelectedImage(null);
   };
-  
-  const handleScrollToForm = () => {
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
+  // ESTE ES EL CÓDIGO CLAVE: Se encarga de desplazarse al formulario.
   useEffect(() => {
     const shouldScroll = localStorage.getItem('scrollToForm');
     
-    if (shouldScroll === 'true') {
-      // Elimina la nota para evitar que se desplace de nuevo
+    if (shouldScroll === 'true' && formRef.current) {
       localStorage.removeItem('scrollToForm');
       
-      // Desplazarse al formulario
-      const formSection = document.getElementById('formulario-presupuesto');
-      if (formSection) {
-        setTimeout(() => {
-          formSection.scrollIntoView({ behavior: 'smooth' });
-        }, 50); 
-      }
+      setTimeout(() => {
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100); // Pequeño retraso para asegurar que el elemento esté visible
     }
   }, []);
-  
-  const form = useForm<z.infer<typeof formSchema>>({
+
+  const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -105,10 +96,10 @@ const Home = () => {
             size="lg"
             className="text-lg px-8 py-4"
             onClick={() => {
-              document.getElementById('formulario-presupuesto').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
+              // Ahora usa la referencia para el scroll, más confiable
+              if (formRef.current) {
+                formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
             }}>
             Solicita tu presupuesto
           </Button>
