@@ -1,4 +1,5 @@
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { useState } from "react";
+import ImageLightbox from "@/components/ImageLightbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -10,6 +11,16 @@ import livingBefore from "@/assets/living-before.jpg";
 import livingAfter from "@/assets/living-after.jpg";
 
 const Gallery = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const openModal = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   const projects = [
     {
       title: "Reforma Integral de Cocina",
@@ -82,13 +93,34 @@ const Gallery = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-0">
-                  <BeforeAfterSlider 
-                    beforeImage={project.beforeImage}
-                    afterImage={project.afterImage}
-                    alt={project.title}
-                    className="h-64 md:h-96 lg:h-[500px] rounded-none"
-                  />
+                <CardContent className="p-4">
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <ImageLightbox
+                      src={project.beforeImage}
+                      alt={`${project.title} - Antes`}
+                      className="flex-1"
+                    >
+                      <img
+                        src={project.beforeImage}
+                        alt={`${project.title} - Estado original`}
+                        className="w-full h-auto cursor-pointer"
+                        onClick={() => openModal(project.beforeImage)}
+                      />
+                    </ImageLightbox>
+
+                    <ImageLightbox
+                      src={project.afterImage}
+                      alt={`${project.title} - Después`}
+                      className="flex-1"
+                    >
+                      <img
+                        src={project.afterImage}
+                        alt={`${project.title} - Completamente renovado`}
+                        className="w-full h-auto cursor-pointer"
+                        onClick={() => openModal(project.afterImage)}
+                      />
+                    </ImageLightbox>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -152,6 +184,34 @@ const Gallery = () => {
           </div>
         </div>
       </section>
+
+      {/* Fullscreen Modal */}
+      {selectedImage && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+          }}
+          onClick={closeModal}
+        >
+          <img 
+            src={selectedImage} 
+            alt="Vista en pantalla completa" 
+            style={{ 
+              maxWidth: '90%', 
+              maxHeight: '90%' 
+            }} 
+          />
+        </div>
+      )}
     </div>
   );
 };
