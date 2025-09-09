@@ -246,18 +246,33 @@ const Home = () => {
                 </div>
                 
                 <div className="p-4">
-                  <ImageLightbox
-                    src={facadeAfter}
-                    alt="Restauración de fachada en Eixample - Vista ampliada"
-                    className="block"
-                  >
-                    <img
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <ImageLightbox
+                      src={facadeBefore}
+                      alt="Restauración de fachada en Eixample - Antes"
+                      className="flex-1"
+                    >
+                      <img
+                        src={facadeBefore}
+                        alt="Restauración de fachada - Estado original."
+                        className="w-full h-auto cursor-pointer"
+                        onClick={() => openModal(facadeBefore)}
+                      />
+                    </ImageLightbox>
+
+                    <ImageLightbox
                       src={facadeAfter}
-                      alt="Restauración de fachada en Eixample - Fachada completamente renovada."
-                      className="h-64 md:h-96 lg:h-full w-full object-cover cursor-pointer"
-                      onClick={() => openModal(facadeAfter)}
-                    />
-                  </ImageLightbox>
+                      alt="Restauración de fachada en Eixample - Después"
+                      className="flex-1"
+                    >
+                      <img
+                        src={facadeAfter}
+                        alt="Restauración de fachada - Completamente renovada."
+                        className="w-full h-auto cursor-pointer"
+                        onClick={() => openModal(facadeAfter)}
+                      />
+                    </ImageLightbox>
+                  </div>
                   <div className="mt-4 text-center">
                     <p className="text-sm text-muted-foreground">
                       <span className="font-medium">Antes:</span> Estado original del edificio en Barcelona.
