@@ -15,8 +15,8 @@ import ImageLightbox from "@/components/ImageLightbox";
 import heroImage from "@/assets/hero-professional.jpg";
 import kitchenBefore from "@/assets/kitchen-before-professional.jpg";
 import kitchenAfter from "@/assets/kitchen-after-professional.jpg";
-import facadeBefore from "@/assets/facade-before.jpg";
-import facadeAfter from "@/assets/facade-after.jpg";
+const facadeBefore = "/lovable-uploads/65f44365-8ec1-4dc4-8bfd-1c035df281bf.png";
+const facadeAfter = "/lovable-uploads/dc849163-c2ed-47a0-b559-af5a30526cbd.png";
 
 const formSchema = z.object({
   name: z.string().min(2, {
