@@ -2,7 +2,7 @@ import { useState } from "react";
 import ImageLightbox from "@/components/ImageLightbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Se agrega useNavigate para la navegación
 import kitchenBefore from "@/assets/kitchen-before.jpg";
 import kitchenAfter from "@/assets/kitchen-after.jpg";
 import bathroomBefore from "@/assets/bathroom-before.jpg";
@@ -12,6 +12,7 @@ import livingAfter from "@/assets/living-after.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const navigate = useNavigate(); // Se inicializa el hook de navegación
 
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
@@ -126,10 +127,12 @@ const Gallery = () => {
               Estos son solo algunos ejemplos de nuestro trabajo. Cada proyecto es único y se adapta completamente a las necesidades y gustos del cliente.
             </p>
             <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+              {/* Se modifica el botón para usar la función de localStorage */}
               <Button 
                 size="lg"
                 onClick={() => {
-                  window.location.href = 'https://repair-and-clean.com/#formulario-presupuesto';
+                  localStorage.setItem('scrollToForm', 'true');
+                  navigate('/');
                 }}>
                 Solicita tu presupuesto
               </Button>
@@ -152,7 +155,7 @@ const Gallery = () => {
               Así es como transformamos tu hogar paso a paso
             </p>
           </div>
-          
+            
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { step: "1", title: "Consulta inicial", description: "Visitamos tu hogar y evaluamos el proyecto" },
