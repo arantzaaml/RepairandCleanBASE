@@ -27,24 +27,21 @@ const Gallery = () => {
       description: "Transformación completa de una cocina antigua en un espacio moderno y funcional con nuevos electrodomésticos y diseño contemporáneo.",
       beforeImage: kitchenBefore,
       afterImage: kitchenAfter,
-      category: "Reformas",
-      duration: "2 semanas"
+      category: "Reformas"
     },
     {
       title: "Renovación de Baño Principal",
       description: "Renovación completa del baño principal con materiales de alta calidad, nueva distribución y elementos de lujo.",
       beforeImage: bathroomBefore,
       afterImage: bathroomAfter,
-      category: "Reformas",
-      duration: "10 días"
+      category: "Reformas"
     },
     {
       title: "Remodelación de Salón",
       description: "Transformación del salón con nuevo diseño de iluminación, pintura, suelos y distribución del mobiliario.",
       beforeImage: livingBefore,
       afterImage: livingAfter,
-      category: "Reformas",
-      duration: "1 semana"
+      category: "Reformas"
     }
   ];
 
@@ -65,14 +62,9 @@ const Gallery = () => {
       {/* Gallery Section */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Antes y Después
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Desliza para ver el increíble cambio en cada proyecto
-            </p>
-          </div>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-center mb-12">
+            Nuestros Proyectos
+          </h2>
 
           <div className="space-y-16">
             {projects.map((project, index) => (
@@ -89,7 +81,6 @@ const Gallery = () => {
                     </div>
                     <div className="flex flex-col text-sm text-muted-foreground">
                       <span className="font-medium">Categoría: {project.category}</span>
-                      <span className="font-medium">Duración: {project.duration}</span>
                     </div>
                   </div>
                 </CardHeader>
