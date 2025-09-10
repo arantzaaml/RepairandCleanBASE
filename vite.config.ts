@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
+  base: '/repair-and-clean/', // ESTA ES LA LÍNEA QUE FALTABA
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
