@@ -4,36 +4,36 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
-// --- Tus fotos importadas con la extensión .jpeg ---
-import electricidadCuadroElectricoAntes from "@/assets/electricidad-cuadro-electrico-antes.jpeg";
-import electricidadCuadroElectricoDespues from "@/assets/electricidad-cuadro-electrico-despues.jpeg";
+// --- Tus fotos importadas con los nombres EXACTOS que me diste ---
+import electricidadCuadroElectricoAntes from "@/assets/electricidad-cuadro-electrico-antes.jpg";
+import electricidadCuadroElectricoDespues from "@/assets/electricidad-cuadro-electrico-despues.jpg";
 
-import fontaneriaBombaAntes from "@/assets/fontaneria-bomba-antes.jpeg";
-import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpeg";
-import fontaneriaWcAntes from "@/assets/fontaneria-wc-antes.jpeg";
-import fontaneriaWcDespues from "@/assets/fontaneria-wc-despues.jpeg";
+import fontaneriaBombaAntes from "@/assets/fontaneria-bomba-antes.jpg";
+import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpg";
+import fontaneriaWcAntes from "@/assets/fontaneria-wc-antes.jpg";
+import fontaneriaWcDespues from "@/assets/fontaneria-wc-despues.jpg";
 
-import mantenimientoParquetAntes from "@/assets/mantenimiento-parquet-antes.jpeg";
-import mantenimientoParquetDespues from "@/assets/mantenimiento-parquet-despues.jpeg";
-import mantenimientoPinturaParedAntes from "@/assets/mantenimiento-pintura-pared-antes.jpeg";
-import mantenimientoPinturaParedDespues from "@/assets/mantenimiento-pintura-pared-despues.jpeg";
-import mantenimientoPinturaPuertaAntes from "@/assets/mantenimiento-pintura-puerta-antes.jpeg";
-import mantenimientoPinturaPuertaDespues from "@/assets/mantenimiento-pintura-puerta-despues.jpeg";
+import mantenimientoParquetAntes from "@/assets/mantenimiento-parquet-antes.jpg";
+import mantenimientoParquetDespues from "@/assets/mantenimiento-parquet-despues.jpg";
+import mantenimientoPinturaParedAntes from "@/assets/mantenimiento-pintura-pared-antes.jpg";
+import mantenimientoPinturaParedDespues from "@/assets/mantenimiento-pintura-pared-despues.jpg";
+import mantenimientoPinturaPuertaAntes from "@/assets/mantenimiento-pintura-puerta-antes.jpg";
+import mantenimientoPinturaPuertaDespues from "@/assets/mantenimiento-pintura-puerta-despues.jpg";
 
-import reformaEntradaPaso1 from "@/assets/reforma-entrada-paso1.jpeg";
-import reformaEntradaPaso2 from "@/assets/reforma-entrada-paso2.jpeg";
-import reformaEntradaPaso3 from "@/assets/reforma-entrada-paso3.jpeg";
-import reformaInstalacionCocinaAntes from "@/assets/reforma-instalacion-cocina-antes.jpeg";
-import reformaInstalacionCocinaDespues from "@/assets/reforma-instalacion-cocina-despues.jpeg";
+import reformaEntradaPaso1 from "@/assets/reforma-entrada-paso1.jpg";
+import reformaEntradaPaso2 from "@/assets/reforma-entrada-paso2.jpg";
+import reformaEntradaPaso3 from "@/assets/reforma-entrada-paso3.jpg";
+import reformaInstalacionCocinaAntes from "@/assets/reforma-instalacion-cocina-antes.jpg";
+import reformaInstalacionCocinaDespues from "@/assets/reforma-instalacion-cocina-despues.jpg";
 
-import reparacionCeramicaCocinaAntes from "@/assets/reparacion-ceramica-cocina-antes.jpeg";
-import reparacionCeramicaCocinaDespues from "@/assets/reparacion-ceramica-cocina-despues.jpeg";
-import reparacionEscalonPaso1 from "@/assets/reparacion-escalon-paso1.jpeg";
-import reparacionEscalonPaso2 from "@/assets/reparacion-escalon-paso2.jpeg";
-import reparacionEscalonPaso3 from "@/assets/reparacion-escalon-paso3.jpeg";
-import reparacionEscalonPaso4 from "@/assets/reparacion-escalon-paso4.jpeg";
-import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.jpeg";
-import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpeg";
+import reparacionCeramicaCocinaAntes from "@/assets/reparacion-ceramica-cocina-antes.jpg";
+import reparacionCeramicaCocinaDespues from "@/assets/reparacion-ceramica-cocina-despues.jpg";
+import reparacionEscalonPaso1 from "@/assets/reparacion-escalon-paso1.jpg";
+import reparacionEscalonPaso2 from "@/assets/reparacion-escalon-paso2.jpg";
+import reparacionEscalonPaso3 from "@/assets/reparacion-escalon-paso3.jpg";
+import reparacionEscalonPaso4 from "@/assets/reparacion-escalon-paso4.jpg";
+import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.jpg";
+import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpg";
 // -------------------------
 
 const Gallery = () => {
