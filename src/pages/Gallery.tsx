@@ -2,17 +2,43 @@ import { useState } from "react";
 import ImageLightbox from "@/components/ImageLightbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom"; // Se agrega useNavigate para la navegación
-import kitchenBefore from "@/assets/kitchen-before.jpg";
-import kitchenAfter from "@/assets/kitchen-after.jpg";
-import bathroomBefore from "@/assets/bathroom-before.jpg";
-import bathroomAfter from "@/assets/bathroom-after.jpg";
-import livingBefore from "@/assets/living-before.jpg";
-import livingAfter from "@/assets/living-after.jpg";
+import { Link, useNavigate } from "react-router-dom";
+
+// --- Tus nuevas fotos ---
+import electricidadCuadroAntes from "@/assets/electricidad-cuadro-electrico-antes.jpg";
+import electricidadCuadroDespues from "@/assets/electricidad-cuadro-electrico-despues.jpg";
+
+import fontaneriaBombaAntes from "@/assets/fontaneria-bomba-antes.jpg";
+import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpg";
+import fontaneriaWcAntes from "@/assets/fontaneria-wc-antes.jpg";
+import fontaneriaWcDespues from "@/assets/fontaneria-wc-despues.jpg";
+
+import mantenimientoParquetAntes from "@/assets/mantenimiento-parquet-antes.jpg";
+import mantenimientoParquetDespues from "@/assets/mantenimiento-parquet-despues.jpg";
+import mantenimientoPinturaParedAntes from "@/assets/mantenimiento-pintura-pared-antes.jpg";
+import mantenimientoPinturaParedDespues from "@/assets/mantenimiento-pintura-pared-despues.jpg";
+import mantenimientoPinturaPuertaAntes from "@/assets/mantenimiento-pintura-puerta-antes.jpg";
+import mantenimientoPinturaPuertaDespues from "@/assets/mantenimiento-pintura-puerta-despues.jpg";
+
+import reformaEntradaPaso1 from "@/assets/reforma-entrada-paso1.jpg";
+import reformaEntradaPaso2 from "@/assets/reforma-entrada-paso2.jpg";
+import reformaEntradaPaso3 from "@/assets/reforma-entrada-paso3.jpg";
+import reformaInstalacionCocinaAntes from "@/assets/reforma-instalacion-cocina-antes.jpg";
+import reformaInstalacionCocinaDespues from "@/assets/reforma-instalacion-cocina-despues.jpg";
+
+import reparacionCeramicaCocinaAntes from "@/assets/reparacion-ceramica-cocina-antes.jpg";
+import reparacionCeramicaCocinaDespues from "@/assets/reparacion-ceramica-cocina-despues.jpg";
+import reparacionEscalonPaso1 from "@/assets/reparacion-escalon-paso1.jpg";
+import reparacionEscalonPaso2 from "@/assets/reparacion-escalon-paso2.jpg";
+import reparacionEscalonPaso3 from "@/assets/reparacion-escalon-paso3.jpg";
+import reparacionEscalonPaso4 from "@/assets/reparacion-escalon-paso4.jpg";
+import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.jpg";
+import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpg";
+// -------------------------
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const navigate = useNavigate(); // Se inicializa el hook de navegación
+  const navigate = useNavigate();
 
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
@@ -22,29 +48,120 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
-  const projects = [
+  // --- Información y fotos por sección ---
+  const sections = [
     {
-      title: "Reforma Integral de Cocina",
-      description: "Transformación completa de una cocina antigua en un espacio moderno y funcional con nuevos electrodomésticos y diseño contemporáneo.",
-      beforeImage: kitchenBefore,
-      afterImage: kitchenAfter,
-      category: "Reformas"
+      title: "Trabajos de Electricidad",
+      description: "Realizamos instalaciones eléctricas, reparaciones y mejoras en sistemas de iluminación, siempre con la máxima seguridad.",
+      projects: [
+        {
+          alt: "Instalación de cuadro eléctrico",
+          images: [
+            { src: electricidadCuadroAntes, alt: "Antes" },
+            { src: electricidadCuadroDespues, alt: "Después" }
+          ]
+        },
+      ]
     },
     {
-      title: "Renovación de Baño Principal",
-      description: "Renovación completa del baño principal con materiales de alta calidad, nueva distribución y elementos de lujo.",
-      beforeImage: bathroomBefore,
-      afterImage: bathroomAfter,
-      category: "Reformas"
+      title: "Proyectos de Fontanería",
+      description: "Soluciones completas para instalaciones y reparaciones de fontanería, garantizando un servicio eficiente y duradero.",
+      projects: [
+        {
+          alt: "Cambio de bomba de agua",
+          images: [
+            { src: fontaneriaBombaAntes, alt: "Antes" },
+            { src: fontaneriaBombaDespues, alt: "Después" }
+          ]
+        },
+        {
+          alt: "Renovación de WC",
+          images: [
+            { src: fontaneriaWcAntes, alt: "Antes" },
+            { src: fontaneriaWcDespues, alt: "Después" }
+          ]
+        },
+      ]
     },
     {
-      title: "Remodelación de Salón",
-      description: "Transformación del salón con nuevo diseño de iluminación, pintura, suelos y distribución del mobiliario.",
-      beforeImage: livingBefore,
-      afterImage: livingAfter,
-      category: "Reformas"
-    }
+      title: "Servicios de Mantenimiento",
+      description: "Mantenimiento integral para hogares y oficinas. Desde pequeñas reparaciones hasta revisiones periódicas para mantener todo en perfecto estado.",
+      projects: [
+        {
+          alt: "Renovación de parquet",
+          images: [
+            { src: mantenimientoParquetAntes, alt: "Antes" },
+            { src: mantenimientoParquetDespues, alt: "Después" }
+          ]
+        },
+        {
+          alt: "Pintura de pared",
+          images: [
+            { src: mantenimientoPinturaParedAntes, alt: "Antes" },
+            { src: mantenimientoPinturaParedDespues, alt: "Después" }
+          ]
+        },
+        {
+          alt: "Pintura de puerta",
+          images: [
+            { src: mantenimientoPinturaPuertaAntes, alt: "Antes" },
+            { src: mantenimientoPinturaPuertaDespues, alt: "Después" }
+          ]
+        },
+      ]
+    },
+    {
+      title: "Proyectos de Reforma",
+      description: "Transformaciones completas que modernizan y optimizan tu espacio, adaptándolo a tus necesidades y gustos.",
+      projects: [
+        {
+          alt: "Reforma de entrada",
+          images: [
+            { src: reformaEntradaPaso1, alt: "Paso 1: Demolición" },
+            { src: reformaEntradaPaso2, alt: "Paso 2: Instalación de materiales" },
+            { src: reformaEntradaPaso3, alt: "Paso 3: Acabado" }
+          ]
+        },
+        {
+          alt: "Instalación de cocina",
+          images: [
+            { src: reformaInstalacionCocinaAntes, alt: "Antes" },
+            { src: reformaInstalacionCocinaDespues, alt: "Después" }
+          ]
+        },
+      ]
+    },
+    {
+      title: "Servicios de Reparación",
+      description: "Solucionamos problemas graves de infraestructura, devolviendo la seguridad y el buen estado a tu propiedad.",
+      projects: [
+        {
+          alt: "Reparación de cerámica de cocina",
+          images: [
+            { src: reparacionCeramicaCocinaAntes, alt: "Antes" },
+            { src: reparacionCeramicaCocinaDespues, alt: "Después" }
+          ]
+        },
+        {
+          alt: "Reparación de escalón",
+          images: [
+            { src: reparacionEscalonPaso1, alt: "Paso 1: Demolición" },
+            { src: reparacionEscalonPaso2, alt: "Paso 2: Relleno" },
+            { src: reparacionEscalonPaso3, alt: "Paso 3: Acabado" },
+            { src: reparacionEscalonPaso4, alt: "Paso 4: Finalizado" }
+          ]
+        },
+        {
+          alt: "Reparación de grieta en pared",
+          images: [
+            { src: reparacionGrietaParedAntes, alt: "Antes" },
+            { src: reparacionGrietaParedDespues, alt: "Después" }
+          ]
+        },
+      ]
+    },
   ];
+  // ----------------------------------------
 
   return (
     <div className="min-h-screen bg-background pt-20">
@@ -64,55 +181,53 @@ const Gallery = () => {
       <section className="py-16">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-center mb-12">
-            Nuestros Proyectos
+            Nuestros Trabajos por Especialidad
           </h2>
 
           <div className="space-y-16">
-            {projects.map((project, index) => (
+            {sections.map((section, index) => (
               <Card key={index} className="overflow-hidden shadow-elegant">
                 <CardHeader className="bg-secondary/50">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
                       <CardTitle className="text-2xl font-bold text-foreground">
-                        {project.title}
+                        {section.title}
                       </CardTitle>
                       <p className="text-muted-foreground mt-2">
-                        {project.description}
+                        {section.description}
                       </p>
-                    </div>
-                    <div className="flex flex-col text-sm text-muted-foreground">
-                      <span className="font-medium">Categoría: {project.category}</span>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="p-4">
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <ImageLightbox
-                      src={project.beforeImage}
-                      alt={`${project.title} - Antes`}
-                      className="flex-1"
-                    >
-                      <img
-                        src={project.beforeImage}
-                        alt={`${project.title} - Estado original`}
-                        className="w-full h-auto cursor-pointer"
-                        onClick={() => openModal(project.beforeImage)}
-                      />
-                    </ImageLightbox>
-
-                    <ImageLightbox
-                      src={project.afterImage}
-                      alt={`${project.title} - Después`}
-                      className="flex-1"
-                    >
-                      <img
-                        src={project.afterImage}
-                        alt={`${project.title} - Completamente renovado`}
-                        className="w-full h-auto cursor-pointer"
-                        onClick={() => openModal(project.afterImage)}
-                      />
-                    </ImageLightbox>
-                  </div>
+                  {section.projects.length > 0 && (
+                    <div className="grid grid-cols-1 gap-8">
+                      {section.projects.map((project, projectIndex) => (
+                        <div key={projectIndex} className="bg-secondary/30 rounded-lg p-4">
+                          <h4 className="text-lg font-semibold text-center mb-4">{project.alt}</h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {project.images.map((image, imageIndex) => (
+                              <div key={imageIndex} className="flex flex-col items-center">
+                                <span className="text-sm text-gray-500 mb-2">{image.alt}</span>
+                                <ImageLightbox
+                                  src={image.src}
+                                  alt={`${project.alt} - ${image.alt}`}
+                                  className="w-full h-auto cursor-pointer"
+                                >
+                                  <img
+                                    src={image.src}
+                                    alt={`${project.alt} - ${image.alt}`}
+                                    className="w-full h-auto cursor-pointer object-cover aspect-video"
+                                    onClick={() => openModal(image.src)}
+                                  />
+                                </ImageLightbox>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -127,8 +242,7 @@ const Gallery = () => {
               Estos son solo algunos ejemplos de nuestro trabajo. Cada proyecto es único y se adapta completamente a las necesidades y gustos del cliente.
             </p>
             <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-              {/* Se modifica el botón para usar la función de localStorage */}
-              <Button 
+              <Button
                 size="lg"
                 onClick={() => {
                   localStorage.setItem('scrollToForm', 'true');
@@ -155,7 +269,7 @@ const Gallery = () => {
               Así es como transformamos tu hogar paso a paso
             </p>
           </div>
-            
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { step: "1", title: "Consulta inicial", description: "Visitamos tu hogar y evaluamos el proyecto" },
@@ -181,7 +295,7 @@ const Gallery = () => {
 
       {/* Fullscreen Modal */}
       {selectedImage && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
@@ -196,13 +310,13 @@ const Gallery = () => {
           }}
           onClick={closeModal}
         >
-          <img 
-            src={selectedImage} 
-            alt="Vista en pantalla completa" 
-            style={{ 
-              maxWidth: '90%', 
-              maxHeight: '90%' 
-            }} 
+          <img
+            src={selectedImage}
+            alt="Vista en pantalla completa"
+            style={{
+              maxWidth: '90%',
+              maxHeight: '90%'
+            }}
           />
         </div>
       )}
