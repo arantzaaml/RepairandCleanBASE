@@ -2,12 +2,19 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logo from "/lovable-uploads/13b0009c-c307-4eff-bb7c-ca2acd8d8e5a.png";
+import logo from "/lovable-uploads/13b0009c-c307-4eff-bb7c-ca2acd8d2d5a.png";
 import LanguageSelector from "./LanguageSelector";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const navigation = [
     { name: "Inicio", href: "/" },
@@ -35,6 +42,7 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.href}
+                  onClick={item.href === "/" ? handleScrollToTop : undefined}
                   className={cn(
                     "px-4 py-2 rounded-lg text-sm font-medium transition-smooth",
                     isActive(item.href)
@@ -70,13 +78,18 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.href}
+                  onClick={() => {
+                    if (item.href === "/") {
+                      handleScrollToTop();
+                    }
+                    setIsOpen(false);
+                  }}
                   className={cn(
                     "block px-4 py-3 rounded-lg text-base font-medium transition-smooth",
                     isActive(item.href)
                       ? "bg-primary text-primary-foreground"
                       : "text-foreground hover:bg-secondary"
                   )}
-                  onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
