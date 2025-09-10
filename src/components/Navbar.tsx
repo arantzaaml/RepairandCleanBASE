@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logo from "../assets/lovable-uploads/13b0009c-c307-4eff-bb7c-ca2acd8d2d5a.png";
+import logo from "/lovable-uploads/13b0009c-c307-4eff-bb7c-ca2acd8d8e5a.png";
 import LanguageSelector from "./LanguageSelector";
 
 const Navbar = () => {
@@ -22,13 +22,13 @@ const Navbar = () => {
     { name: "Galería", href: "/gallery" },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
+  const isActive = (href) => location.pathname === href;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-glass backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3" onClick={handleScrollToTop}>
             <img src={logo} alt="Repair & Clean Logo" className="h-8 w-8" />
             <span className="text-xl font-semibold text-foreground hidden sm:block">
               Repair & Clean
