@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logo from "/lovable-uploads/13b0009c-c307-4eff-bb7c-ca2acd8d2d5a.png";
+import logo from "../assets/lovable-uploads/13b0009c-c307-4eff-bb7c-ca2acd8d2d5a.png";
 import LanguageSelector from "./LanguageSelector";
 
 const Navbar = () => {
