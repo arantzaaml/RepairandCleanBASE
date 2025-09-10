@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
-// --- Tus fotos importadas (cambia si subiste más) ---
-import electricidadCuadroAntes from "@/assets/electricidad-cuadro-electrico-antes.jpg";
-import electricidadCuadroDespues from "@/assets/electricidad-cuadro-electrico-despues.jpg";
+// --- Tus fotos importadas con los nombres EXACTOS que me diste ---
+import electricidadCuadroElectricoAntes from "@/assets/electricidad-cuadro-electrico-antes.jpg";
+import electricidadCuadroElectricoDespues from "@/assets/electricidad-cuadro-electrico-despues.jpg";
 
 import fontaneriaBombaAntes from "@/assets/fontaneria-bomba-antes.jpg";
 import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpg";
@@ -48,7 +48,7 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
-  // --- La nueva estructura de categorías con tus fotos ---
+  // --- Estructura de categorías con tus fotos organizadas ---
   const sections = [
     {
       title: "Trabajos de Electricidad",
@@ -57,8 +57,8 @@ const Gallery = () => {
         {
           alt: "Instalación de cuadro eléctrico",
           images: [
-            { src: electricidadCuadroAntes, alt: "Antes" },
-            { src: electricidadCuadroDespues, alt: "Después" }
+            { src: electricidadCuadroElectricoAntes, alt: "Antes" },
+            { src: electricidadCuadroElectricoDespues, alt: "Después" }
           ]
         },
       ]
