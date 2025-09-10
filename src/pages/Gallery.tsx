@@ -2,39 +2,10 @@ import { useState } from "react";
 import ImageLightbox from "@/components/ImageLightbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; 
 
-// --- Tus nuevas fotos ---
-import electricidadCuadroAntes from "@/assets/electricidad-cuadro-electrico-antes.jpg";
-import electricidadCuadroDespues from "@/assets/electricidad-cuadro-electrico-despues.jpg";
-
-import fontaneriaBombaAntes from "@/assets/fontaneria-bomba-antes.jpg";
-import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpg";
-import fontaneriaWcAntes from "@/assets/fontaneria-wc-antes.jpg";
-import fontaneriaWcDespues from "@/assets/fontaneria-wc-despues.jpg";
-
-import mantenimientoParquetAntes from "@/assets/mantenimiento-parquet-antes.jpg";
-import mantenimientoParquetDespues from "@/assets/mantenimiento-parquet-despues.jpg";
-import mantenimientoPinturaParedAntes from "@/assets/mantenimiento-pintura-pared-antes.jpg";
-import mantenimientoPinturaParedDespues from "@/assets/mantenimiento-pintura-pared-despues.jpg";
-import mantenimientoPinturaPuertaAntes from "@/assets/mantenimiento-pintura-puerta-antes.jpg";
-import mantenimientoPinturaPuertaDespues from "@/assets/mantenimiento-pintura-puerta-despues.jpg";
-
-import reformaEntradaPaso1 from "@/assets/reforma-entrada-paso1.jpg";
-import reformaEntradaPaso2 from "@/assets/reforma-entrada-paso2.jpg";
-import reformaEntradaPaso3 from "@/assets/reforma-entrada-paso3.jpg";
-import reformaInstalacionCocinaAntes from "@/assets/reforma-instalacion-cocina-antes.jpg";
-import reformaInstalacionCocinaDespues from "@/assets/reforma-instalacion-cocina-despues.jpg";
-
-import reparacionCeramicaCocinaAntes from "@/assets/reparacion-ceramica-cocina-antes.jpg";
-import reparacionCeramicaCocinaDespues from "@/assets/reparacion-ceramica-cocina-despues.jpg";
-import reparacionEscalonPaso1 from "@/assets/reparacion-escalon-paso1.jpg";
-import reparacionEscalonPaso2 from "@/assets/reparacion-escalon-paso2.jpg";
-import reparacionEscalonPaso3 from "@/assets/reparacion-escalon-paso3.jpg";
-import reparacionEscalonPaso4 from "@/assets/reparacion-escalon-paso4.jpg";
-import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.jpg";
-import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpg";
-// -------------------------
+// Aquí es donde en el futuro irán tus fotos importadas. Por ahora, no hay nada.
+// Las agregaremos en el siguiente paso.
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -48,117 +19,33 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
-  // --- Información y fotos por sección ---
+  // --- ¡La nueva estructura de categorías! ---
+  // Ahora la página está dividida en secciones, no en proyectos.
   const sections = [
     {
       title: "Trabajos de Electricidad",
       description: "Realizamos instalaciones eléctricas, reparaciones y mejoras en sistemas de iluminación, siempre con la máxima seguridad.",
-      projects: [
-        {
-          alt: "Instalación de cuadro eléctrico",
-          images: [
-            { src: electricidadCuadroAntes, alt: "Antes" },
-            { src: electricidadCuadroDespues, alt: "Después" }
-          ]
-        },
-      ]
+      projects: [] // Esta lista está vacía, aquí pondremos tus proyectos
     },
     {
       title: "Proyectos de Fontanería",
       description: "Soluciones completas para instalaciones y reparaciones de fontanería, garantizando un servicio eficiente y duradero.",
-      projects: [
-        {
-          alt: "Cambio de bomba de agua",
-          images: [
-            { src: fontaneriaBombaAntes, alt: "Antes" },
-            { src: fontaneriaBombaDespues, alt: "Después" }
-          ]
-        },
-        {
-          alt: "Renovación de WC",
-          images: [
-            { src: fontaneriaWcAntes, alt: "Antes" },
-            { src: fontaneriaWcDespues, alt: "Después" }
-          ]
-        },
-      ]
+      projects: [] // Esta lista está vacía, aquí pondremos tus proyectos
     },
     {
       title: "Servicios de Mantenimiento",
       description: "Mantenimiento integral para hogares y oficinas. Desde pequeñas reparaciones hasta revisiones periódicas para mantener todo en perfecto estado.",
-      projects: [
-        {
-          alt: "Renovación de parquet",
-          images: [
-            { src: mantenimientoParquetAntes, alt: "Antes" },
-            { src: mantenimientoParquetDespues, alt: "Después" }
-          ]
-        },
-        {
-          alt: "Pintura de pared",
-          images: [
-            { src: mantenimientoPinturaParedAntes, alt: "Antes" },
-            { src: mantenimientoPinturaParedDespues, alt: "Después" }
-          ]
-        },
-        {
-          alt: "Pintura de puerta",
-          images: [
-            { src: mantenimientoPinturaPuertaAntes, alt: "Antes" },
-            { src: mantenimientoPinturaPuertaDespues, alt: "Después" }
-          ]
-        },
-      ]
+      projects: [] // Esta lista está vacía, aquí pondremos tus proyectos
     },
     {
       title: "Proyectos de Reforma",
       description: "Transformaciones completas que modernizan y optimizan tu espacio, adaptándolo a tus necesidades y gustos.",
-      projects: [
-        {
-          alt: "Reforma de entrada",
-          images: [
-            { src: reformaEntradaPaso1, alt: "Paso 1: Demolición" },
-            { src: reformaEntradaPaso2, alt: "Paso 2: Instalación de materiales" },
-            { src: reformaEntradaPaso3, alt: "Paso 3: Acabado" }
-          ]
-        },
-        {
-          alt: "Instalación de cocina",
-          images: [
-            { src: reformaInstalacionCocinaAntes, alt: "Antes" },
-            { src: reformaInstalacionCocinaDespues, alt: "Después" }
-          ]
-        },
-      ]
+      projects: [] // Esta lista está vacía, aquí pondremos tus proyectos
     },
     {
       title: "Servicios de Reparación",
       description: "Solucionamos problemas graves de infraestructura, devolviendo la seguridad y el buen estado a tu propiedad.",
-      projects: [
-        {
-          alt: "Reparación de cerámica de cocina",
-          images: [
-            { src: reparacionCeramicaCocinaAntes, alt: "Antes" },
-            { src: reparacionCeramicaCocinaDespues, alt: "Después" }
-          ]
-        },
-        {
-          alt: "Reparación de escalón",
-          images: [
-            { src: reparacionEscalonPaso1, alt: "Paso 1: Demolición" },
-            { src: reparacionEscalonPaso2, alt: "Paso 2: Relleno" },
-            { src: reparacionEscalonPaso3, alt: "Paso 3: Acabado" },
-            { src: reparacionEscalonPaso4, alt: "Paso 4: Finalizado" }
-          ]
-        },
-        {
-          alt: "Reparación de grieta en pared",
-          images: [
-            { src: reparacionGrietaParedAntes, alt: "Antes" },
-            { src: reparacionGrietaParedDespues, alt: "Después" }
-          ]
-        },
-      ]
+      projects: [] // Esta lista está vacía, aquí pondremos tus proyectos
     },
   ];
   // ----------------------------------------
@@ -200,7 +87,7 @@ const Gallery = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="p-4">
-                  {section.projects.length > 0 && (
+                  {section.projects.length > 0 ? (
                     <div className="grid grid-cols-1 gap-8">
                       {section.projects.map((project, projectIndex) => (
                         <div key={projectIndex} className="bg-secondary/30 rounded-lg p-4">
@@ -226,6 +113,10 @@ const Gallery = () => {
                           </div>
                         </div>
                       ))}
+                    </div>
+                  ) : (
+                    <div className="text-center text-muted-foreground py-8">
+                      <p>Próximamente... ¡Estamos trabajando en agregar las fotos de esta sección!</p>
                     </div>
                   )}
                 </CardContent>
