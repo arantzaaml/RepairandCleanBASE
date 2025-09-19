@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
-import { Wrench, Sparkles, Droplets, Hammer, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Wrench, Droplets, Hammer, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -136,14 +136,13 @@ const Home = () => {
             <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
               <CardContent className="p-8 text-center">
                 <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
-                  <Sparkles className="h-8 w-8" />
+                  <Droplets className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Limpieza profesional
+                  Fontanería Profesional
                 </h3>
                 <p className="text-muted-foreground">
-                  Mantenemos tus espacios impecables. Ofrecemos limpieza profunda para hogares, oficinas y
-                  comunidades. Nuestro equipo usa productos de calidad y las mejores técnicas para un resultado brillante.
+                  Expertos en desatascos, reparación de fugas, instalaciones de grifería y sanitarios, y sistemas de agua completos para tu hogar o negocio.
                 </p>
               </CardContent>
             </Card>
@@ -154,11 +153,10 @@ const Home = () => {
                   <Wrench className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Mantenimiento de edificios
+                  Electricidad Certificada
                 </h3>
                 <p className="text-muted-foreground">
-                  Cuidamos tu propiedad para que no tengas que preocuparte. Nos encargamos de tareas de
-                  mantenimiento preventivo y correctivo, asegurando que tu edificio o local se mantenga en perfectas condiciones.
+                  Instalaciones eléctricas seguras, reparación de averías, boletines de luz, y modernización de cuadros eléctricos para garantizar tu tranquilidad.
                 </p>
               </CardContent>
             </Card>
@@ -169,11 +167,10 @@ const Home = () => {
                   <Hammer className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Reparaciones y reformas
+                  Reparaciones Urgentes y del Hogar
                 </h3>
                 <p className="text-muted-foreground">
-                  De un simple arreglo a una reforma completa. Nuestro equipo de técnicos calificados puede
-                  solucionar problemas de fontanería, pintura, electricidad, y más. Devolvemos la vida a tus espacios.
+                  De averías inesperadas a pequeños arreglos, nuestro equipo resuelve problemas de humedades, persianas, cerraduras y más, de forma rápida y eficiente.
                 </p>
               </CardContent>
             </Card>
@@ -498,7 +495,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-64 bg-muted rounded-b-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.835472401878!2d2.193233815340051!3d41.41113037926107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4b87e2b8c5e9f%3A0x6b4c3e387e7d9b9c!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona%2C%20Spain!5e0!3m2!1sen!2sus!4v1662365449293!5m2!1sen!2sus"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.835472719277!2d2.1834226154227893!3d41.40871957926284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a329d47914e9%3A0x6d95b508d745a3c9!2sCarrer%20de%20la%20Manigua%2C%2018%2C%2008027%20Barcelona%2C%20Spain!5e0!3m2!1sen!2ses!4v1628173434057!5m2!1sen!2ses"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
