@@ -111,11 +111,11 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-foreground mb-6">
-              Una década de experiencia y confianza a tu servicio
+              3 años de dedicación y excelencia
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              En Repair and Clean, nuestra misión es simplificar tu vida. Con más de 10 años de experiencia,
-              hemos construido un equipo de expertos dedicados a ofrecer servicios de la más alta calidad en
+              En Repair and Clean, nuestra misión es simplificar tu vida. Desde hace 3 años,
+              nos hemos dedicado a construir un equipo de expertos que ofrecen servicios de la más alta calidad en
               limpieza, mantenimiento y reparaciones. Nos enorgullece nuestro trabajo, y tu satisfacción es
               nuestro compromiso más importante.
             </p>
@@ -527,8 +527,8 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Experiencia comprobada",
-                description: "Más de 10 años transformando hogares en Barcelona"
+                title: "3 años de dedicación y excelencia",
+                description: "Expertos en reparaciones y mantenimiento en Barcelona"
               },
               {
                 title: "Presupuesto sin compromiso",
