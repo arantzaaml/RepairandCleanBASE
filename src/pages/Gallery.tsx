@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
 // ====================================================================
-// IMPORTACIONES CORREGIDAS: RUTA ABSOLUTA USANDO ALIAS '@/assets/'
+// IMPORTACIONES DE IMÁGENES
 // ====================================================================
 
 import electricidadCuadroElectricoAntes from "@/assets/electricidad-cuadro-electrico-antes.jpeg";
@@ -38,11 +38,11 @@ import reparacionEscalonPaso4 from "@/assets/reparacion-escalon-paso4.jpeg";
 import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.jpeg";
 import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpeg";
 
-// ====================================================================
-// ARCHIVOS SOLICITADOS (CORREGIDOS: CAMBIADO .jpeg a .jpg)
-import seguridadAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpg"; // <-- CORRECCIÓN AQUÍ
-import seguridadAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpg"; // <-- CORRECCIÓN AQUÍ
-import seguridadAcceso3 from "@/assets/seguridad-preventiva-acceso3.jpg"; // <-- CORRECCIÓN AQUÍ
+// Imágenes de Seguridad (Corregidas a .jpg y guiones simples)
+import seguridadAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpg";
+import seguridadAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpg";
+import seguridadAcceso3 from "@/assets/seguridad-preventiva-acceso3.jpg";
+
 // ====================================================================
 
 
@@ -58,9 +58,9 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
-  // --- Estructura de categorías con las fotos actualizadas ---
+  // --- Estructura de categorías con las fotos ---
   const sections = [
-    // SECCIÓN CORREGIDA CON LAS 3 IMÁGENES SOLICITADAS
+    // SECCIÓN DE SEGURIDAD
     {
       title: "Seguridad y Reparaciones Urgentes",
       description: "Trabajos de seguridad preventiva, accesos y atención inmediata a problemas de infraestructura.",
@@ -75,7 +75,6 @@ const Gallery = () => {
         },
       ]
     },
-    // FIN SECCIÓN REPARACIONES DE URGENCIA
     {
       title: "Trabajos de Electricidad",
       description: "Realizamos instalaciones eléctricas, reparaciones y mejoras en sistemas de iluminación, siempre con la máxima seguridad.",
@@ -284,7 +283,7 @@ const Gallery = () => {
                 <Button variant="outline" size="lg">Ver nuestros servicios</Button>
               </Link>
             </div>
-        </div>
+          </div>
         </div>
       </section>
 
@@ -294,7 +293,7 @@ const Gallery = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Nuestro Proceso
-            </h2>
+            </b>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Así es como transformamos tu hogar paso a paso
             </p>
@@ -313,7 +312,7 @@ const Gallery = () => {
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   {process.title}
-                </b>
+                </h3>
                 <p className="text-muted-foreground">
                   {process.description}
                 </p>
