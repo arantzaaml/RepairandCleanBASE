@@ -39,10 +39,10 @@ import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.j
 import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpeg";
 
 // ====================================================================
-// ARCHIVOS SOLICITADOS (CORREGIDOS)
-import seguridadAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpeg"; 
-import seguridadAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpeg"; 
-import seguridadAcceso3 from "@/assets/seguridad-preventiva-acceso3.jpeg"; 
+// ARCHIVOS SOLICITADOS (CORREGIDOS: CAMBIADO .jpeg a .jpg)
+import seguridadAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpg"; // <-- CORRECCIÓN AQUÍ
+import seguridadAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpg"; // <-- CORRECCIÓN AQUÍ
+import seguridadAcceso3 from "@/assets/seguridad-preventiva-acceso3.jpg"; // <-- CORRECCIÓN AQUÍ
 // ====================================================================
 
 
@@ -284,7 +284,7 @@ const Gallery = () => {
                 <Button variant="outline" size="lg">Ver nuestros servicios</Button>
               </Link>
             </div>
-          </div>
+        </div>
         </div>
       </section>
 
