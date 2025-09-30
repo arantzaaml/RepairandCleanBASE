@@ -22,7 +22,6 @@ import imageAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpeg";
 import electricidadCuadroElectricoDespues from "@/assets/electricidad-cuadro-electrico-despues.jpeg";
 import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpeg";
 import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpeg";
-// import imageAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpeg"; // Eliminada la importación si no se usa aquí
 
 // Rutas directas existentes para la Reforma (Prioridad Baja)
 const facadeBefore = "/lovable-uploads/65f44365-8ec1-4dc4-8bfd-1c035df281bf.png";
@@ -48,30 +47,30 @@ const formSchema = z.object({
 });
 
 const featuredProjects = [
-  {
-    title: "Cuadro Eléctrico Modernizado",
-    description: "Modernización y seguridad en la instalación eléctrica.",
-    image: electricidadCuadroElectricoDespues, 
-    category: "Electricidad",
-  },
-  {
-    title: "Sistemas de Fontanería",
-    description: "Reparación e instalación de bombas de agua y tuberías.",
-    image: fontaneriaBombaDespues, 
-    category: "Fontanería",
-  },
-  {
-    title: "Reparación Rápida de Grietas",
-    description: "Arreglo estructural y estético de paredes.",
-    image: reparacionGrietaParedDespues, 
-    category: "Reparaciones",
-  },
-  {
-    title: "Instalación de Rejas Preventivas",
-    description: "Mejora de la seguridad en accesos y balcones.",
-    image: imageAcceso1, 
-    category: "Seguridad",
-  },
+  {
+    title: "Cuadro Eléctrico Modernizado",
+    description: "Modernización y seguridad en la instalación eléctrica.",
+    image: electricidadCuadroElectricoDespues, 
+    category: "Electricidad",
+  },
+  {
+    title: "Sistemas de Fontanería",
+    description: "Reparación e instalación de bombas de agua y tuberías.",
+    image: fontaneriaBombaDespues, 
+    category: "Fontanería",
+  },
+  {
+    title: "Reparación Rápida de Grietas",
+    description: "Arreglo estructural y estético de paredes.",
+    image: reparacionGrietaParedDespues, 
+    category: "Reparaciones",
+  },
+  {
+    title: "Instalación de Rejas Preventivas",
+    description: "Mejora de la seguridad en accesos y balcones.",
+    image: imageAcceso1, 
+    category: "Seguridad",
+  },
 ];
 
 
@@ -239,45 +238,45 @@ const Home = () => {
               Nuestro Foco: Soluciones Rápidas y Eficaces
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Trabajos de 1 a 2 días que resuelven problemas esenciales de inmediato.
+              Intervenciones clave para problemas esenciales. Soluciones eficaces entregadas en cuestión de días.
             </p>
           </div>
 
-          {/* Cuadrícula de 4 trabajos medianos/pequeños */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {featuredProjects.map((project, index) => (
-              <Card key={index} className="overflow-hidden shadow-elegant group">
-                <CardContent className="p-0">
-                  <ImageLightbox 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-48 block cursor-pointer"
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                      onClick={() => openModal(project.image)}
-                    />
-                  </ImageLightbox>
-                </CardContent>
-                <CardHeader className="p-4">
-                  <p className="text-sm font-medium text-primary mb-1">{project.category}</p>
-                  <CardTitle className="text-lg font-semibold text-foreground">{project.title}</CardTitle>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
+          {/* Cuadrícula de 4 trabajos medianos/pequeños */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {featuredProjects.map((project, index) => (
+              <Card key={index} className="overflow-hidden shadow-elegant group">
+                <CardContent className="p-0">
+                  <ImageLightbox 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-48 block cursor-pointer"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                      onClick={() => openModal(project.image)}
+                    />
+                  </ImageLightbox>
+                </CardContent>
+                <CardHeader className="p-4">
+                  <p className="text-sm font-medium text-primary mb-1">{project.category}</p>
+                  <CardTitle className="text-lg font-semibold text-foreground">{project.title}</CardTitle>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
 
-          {/* Sección de la Reforma de Fachada (Ahora es el Proyecto Secundario) */}
-          <div className="text-center mb-12 border-t pt-8 border-primary/20">
-             <h3 className="text-3xl font-bold text-foreground mb-4">
+          {/* Sección de la Reforma de Fachada (Ahora es el Proyecto Secundario) */}
+          <div className="text-center mb-12 border-t pt-8 border-primary/20">
+             <h3 className="text-3xl font-bold text-foreground mb-4">
                 También hacemos: Grandes Reformas Integrales
             </h3>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
               Demostramos nuestra capacidad y experiencia en proyectos a largo plazo como la restauración de fachadas.
             </p>
-          </div>
+          </div>
           
           <Card className="max-w-4xl mx-auto overflow-hidden shadow-elegant mb-12">
             <CardContent className="p-0">
