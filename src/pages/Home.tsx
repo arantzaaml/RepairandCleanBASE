@@ -10,13 +10,21 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import ImageLightbox from "@/components/ImageLightbox";
+import ImageLightbox from "@/components/ImageLightbox"; 
+
+// ====================================================================
+// IMPORTACIONES DE IMÁGENES
+// NOTA: Estas importaciones asumen que tus archivos están en '@/assets/'
 import heroImage from "@/assets/hero-professional.jpg";
-import kitchenBefore from "@/assets/kitchen-before-professional.jpg";
-import kitchenAfter from "@/assets/kitchen-after-professional.jpg";
+// Las tres nuevas imágenes solicitadas, con extensión .jpeg
+import imageAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpeg";
+import imageAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpeg";
+import imageAcceso3 from "@/assets/seguridad-preventiva-acceso3.jpeg";
+
+// Rutas directas existentes (si estos archivos no están en assets)
 const facadeBefore = "/lovable-uploads/65f44365-8ec1-4dc4-8bfd-1c035df281bf.png";
 const facadeAfter = "/lovable-uploads/dc849163-c2ed-47a0-b559-af5a30526cbd.png";
+// ====================================================================
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -49,7 +57,7 @@ const Home = () => {
     setSelectedImage(null);
   };
 
-  // ESTE ES EL CÓDIGO CLAVE: Se encarga de desplazarse al formulario.
+  // Código para desplazamiento al formulario usando localStorage
   useEffect(() => {
     const shouldScroll = localStorage.getItem('scrollToForm');
     
@@ -58,7 +66,7 @@ const Home = () => {
       
       setTimeout(() => {
         formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100); // Pequeño retraso para asegurar que el elemento esté visible
+      }, 100);
     }
   }, []);
 
@@ -75,6 +83,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div
@@ -96,7 +105,6 @@ const Home = () => {
             size="lg"
             className="text-lg px-8 py-4"
             onClick={() => {
-              // Ahora usa la referencia para el scroll, más confiable
               if (formRef.current) {
                 formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
@@ -161,6 +169,7 @@ const Home = () => {
               </CardContent>
             </Card>
 
+            {/* INICIO: Card Reparaciones Urgentes (con las 3 imágenes modificadas) */}
             <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
               <CardContent className="p-8 text-center">
                 <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
@@ -169,11 +178,34 @@ const Home = () => {
                 <h3 className="text-xl font-semibold text-foreground mb-3">
                   Reparaciones Urgentes y del Hogar
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground mb-4">
                   De averías inesperadas a pequeños arreglos, nuestro equipo resuelve problemas de humedades, persianas, cerraduras y más, de forma rápida y eficiente.
+                </p>
+                
+                {/* Contenedor de las 3 imágenes */}
+                <div className="flex justify-center gap-2 mt-4">
+                  {[imageAcceso1, imageAcceso2, imageAcceso3].map((imgSrc, index) => (
+                    <ImageLightbox
+                      key={index}
+                      src={imgSrc}
+                      alt={`Seguridad Preventiva Acceso ${index + 1}`}
+                      className="w-1/3 overflow-hidden rounded-md shadow-md cursor-pointer transition-transform duration-300 hover:scale-[1.03]"
+                    >
+                      <img
+                        src={imgSrc}
+                        alt={`Seguridad Preventiva Acceso ${index + 1}`}
+                        className="w-full h-auto object-cover"
+                        onClick={() => openModal(imgSrc)}
+                      />
+                    </ImageLightbox>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground/70 mt-2">
+                  Ejemplos de nuestros servicios urgentes
                 </p>
               </CardContent>
             </Card>
+            {/* FIN: Card Reparaciones Urgentes */}
           </div>
           
           <div className="text-center mt-12">
@@ -551,6 +583,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Lightbox (Modal) */}
       {selectedImage && (
         <div 
           style={{
