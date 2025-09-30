@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
 // ====================================================================
-// IMPORTACIONES CORREGIDAS: RUTA RELATIVA Y SOLO LAS 3 FOTOS SOLICITADAS
-// Se asume que estos son los nombres finales que usas en tu carpeta 'assets'.
+// IMPORTACIONES CORREGIDAS: RUTA RELATIVA y TODAS con .jpeg
+// ====================================================================
 
 import electricidadCuadroElectricoAntes from "../assets/electricidad-cuadro-electrico-antes.jpeg";
 import electricidadCuadroElectricoDespues from "../assets/electricidad-cuadro-electrico-despues.jpeg";
@@ -39,11 +39,10 @@ import reparacionGrietaParedAntes from "../assets/reparacion-grieta-pared-antes.
 import reparacionGrietaParedDespues from "../assets/reparacion-grieta-pared-despues.jpeg";
 
 // ====================================================================
-// ARCHIVOS SOLICITADOS AHORA (Asumiendo que estos nombres son archivos .jpg o .jpeg en la carpeta assets)
-import seguridadAcceso1 from "../assets/seguridad-preventiva-acceso1.jpg"; 
-import seguridadAcceso2 from "../assets/seguridad-preventiva-acceso2.jpg"; 
-import seguridadAcceso3 from "../assets/seguridad-preventiva-acceso3.jpg"; 
-// NOTA: Si estas 3 fotos son .jpeg, simplemente cambia la extensión a .jpeg arriba.
+// ARCHIVOS SOLICITADOS (CON NOMBRE Y EXTENSIÓN CORRECTAS)
+import seguridadAcceso1 from "../assets/seguridad-preventiva-acceso1.jpeg"; 
+import seguridadAcceso2 from "../assets/seguridad-preventiva-acceso2.jpeg"; 
+import seguridadAcceso3 from "../assets/seguridad-preventiva-acceso3.jpeg"; 
 // ====================================================================
 
 
@@ -61,7 +60,7 @@ const Gallery = () => {
 
   // --- Estructura de categorías con las fotos actualizadas ---
   const sections = [
-    // SECCIÓN AÑADIDA/CORREGIDA CON LAS 3 IMÁGENES SOLICITADAS
+    // SECCIÓN CORREGIDA CON LAS 3 IMÁGENES SOLICITADAS
     {
       title: "Seguridad y Reparaciones Urgentes",
       description: "Trabajos de seguridad preventiva, accesos y atención inmediata a problemas de infraestructura.",
