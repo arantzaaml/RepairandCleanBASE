@@ -4,43 +4,54 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
-// --- Tus fotos importadas con la extensión .jpeg ---
-import electricidadCuadroElectricoAntes from "@/assets/electricidad-cuadro-electrico-antes.jpeg";
-import electricidadCuadroElectricoDespues from "@/assets/electricidad-cuadro-electrico-despues.jpeg";
+// ====================================================================
+// IMPORTACIONES CORREGIDAS: RUTA RELATIVA Y SOLO LAS 3 FOTOS SOLICITADAS
+// Se asume que estos son los nombres finales que usas en tu carpeta 'assets'.
 
-import fontaneriaBombaAntes from "@/assets/fontaneria-bomba-antes.jpeg";
-import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpeg";
-import fontaneriaWcAntes from "@/assets/fontaneria-wc-antes.jpeg";
-import fontaneriaWcDespues from "@/assets/fontaneria-wc-despues.jpeg";
+import electricidadCuadroElectricoAntes from "../assets/electricidad-cuadro-electrico-antes.jpeg";
+import electricidadCuadroElectricoDespues from "../assets/electricidad-cuadro-electrico-despues.jpeg";
 
-import mantenimientoParquetAntes from "@/assets/mantenimiento-parquet-antes.jpeg";
-import mantenimientoParquetDespues from "@/assets/mantenimiento-parquet-despues.jpeg";
-import mantenimientoPinturaParedAntes from "@/assets/mantenimiento-pintura-pared-antes.jpeg";
-import mantenimientoPinturaParedDespues from "@/assets/mantenimiento-pintura-pared-despues.jpeg";
-import mantenimientoPinturaPuertaAntes from "@/assets/mantenimiento-pintura-puerta-antes.jpeg";
-import mantenimientoPinturaPuertaDespues from "@/assets/mantenimiento-pintura-puerta-despues.jpeg";
+import fontaneriaBombaAntes from "../assets/fontaneria-bomba-antes.jpeg";
+import fontaneriaBombaDespues from "../assets/fontaneria-bomba-despues.jpeg";
+import fontaneriaWcAntes from "../assets/fontaneria-wc-antes.jpeg";
+import fontaneriaWcDespues from "../assets/fontaneria-wc-despues.jpeg";
 
-import reformaEntradaPaso1 from "@/assets/reforma-entrada-paso1.jpeg";
-import reformaEntradaPaso2 from "@/assets/reforma-entrada-paso2.jpeg";
-import reformaEntradaPaso3 from "@/assets/reforma-entrada-paso3.jpeg";
-import reformaInstalacionCocinaAntes from "@/assets/reforma-instalacion-cocina-antes.jpeg";
-import reformaInstalacionCocinaDespues from "@/assets/reforma-instalacion-cocina-despues.jpeg";
+import mantenimientoParquetAntes from "../assets/mantenimiento-parquet-antes.jpeg";
+import mantenimientoParquetDespues from "../assets/mantenimiento-parquet-despues.jpeg";
+import mantenimientoPinturaParedAntes from "../assets/mantenimiento-pintura-pared-antes.jpeg";
+import mantenimientoPinturaParedDespues from "../assets/mantenimiento-pintura-pared-despues.jpeg";
+import mantenimientoPinturaPuertaAntes from "../assets/mantenimiento-pintura-puerta-antes.jpeg";
+import mantenimientoPinturaPuertaDespues from "../assets/mantenimiento-pintura-puerta-despues.jpeg";
 
-import reparacionCeramicaCocinaAntes from "@/assets/reparacion-ceramica-cocina-antes.jpeg";
-import reparacionCeramicaCocinaDespues from "@/assets/reparacion-ceramica-cocina-despues.jpeg";
-import reparacionEscalonPaso1 from "@/assets/reparacion-escalon-paso1.jpeg";
-import reparacionEscalonPaso2 from "@/assets/reparacion-escalon-paso2.jpeg";
-import reparacionEscalonPaso3 from "@/assets/reparacion-escalon-paso3.jpeg";
-import reparacionEscalonPaso4 from "@/assets/reparacion-escalon-paso4.jpeg";
-import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.jpeg";
-import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpeg";
-// -------------------------
+import reformaEntradaPaso1 from "../assets/reforma-entrada-paso1.jpeg";
+import reformaEntradaPaso2 from "../assets/reforma-entrada-paso2.jpeg";
+import reformaEntradaPaso3 from "../assets/reforma-entrada-paso3.jpeg";
+import reformaInstalacionCocinaAntes from "../assets/reforma-instalacion-cocina-antes.jpeg";
+import reformaInstalacionCocinaDespues from "../assets/reforma-instalacion-cocina-despues.jpeg";
+
+import reparacionCeramicaCocinaAntes from "../assets/reparacion-ceramica-cocina-antes.jpeg";
+import reparacionCeramicaCocinaDespues from "../assets/reparacion-ceramica-cocina-despues.jpeg";
+import reparacionEscalonPaso1 from "../assets/reparacion-escalon-paso1.jpeg";
+import reparacionEscalonPaso2 from "../assets/reparacion-escalon-paso2.jpeg";
+import reparacionEscalonPaso3 from "../assets/reparacion-escalon-paso3.jpeg";
+import reparacionEscalonPaso4 from "../assets/reparacion-escalon-paso4.jpeg";
+import reparacionGrietaParedAntes from "../assets/reparacion-grieta-pared-antes.jpeg";
+import reparacionGrietaParedDespues from "../assets/reparacion-grieta-pared-despues.jpeg";
+
+// ====================================================================
+// ARCHIVOS SOLICITADOS AHORA (Asumiendo que estos nombres son archivos .jpg o .jpeg en la carpeta assets)
+import seguridadAcceso1 from "../assets/seguridad-preventiva-acceso1.jpg"; 
+import seguridadAcceso2 from "../assets/seguridad-preventiva-acceso2.jpg"; 
+import seguridadAcceso3 from "../assets/seguridad-preventiva-acceso3.jpg"; 
+// NOTA: Si estas 3 fotos son .jpeg, simplemente cambia la extensión a .jpeg arriba.
+// ====================================================================
+
 
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
 
-  const openModal = (imageSrc: string) => {
+  const openModal = (imageSrc) => {
     setSelectedImage(imageSrc);
   };
 
@@ -48,8 +59,24 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
-  // --- Estructura de categorías con tus fotos organizadas ---
+  // --- Estructura de categorías con las fotos actualizadas ---
   const sections = [
+    // SECCIÓN AÑADIDA/CORREGIDA CON LAS 3 IMÁGENES SOLICITADAS
+    {
+      title: "Seguridad y Reparaciones Urgentes",
+      description: "Trabajos de seguridad preventiva, accesos y atención inmediata a problemas de infraestructura.",
+      projects: [
+        {
+          alt: "Seguridad Preventiva: Accesos y Barreras",
+          images: [
+            { src: seguridadAcceso1, alt: "Seguridad - Imagen 1" },
+            { src: seguridadAcceso2, alt: "Seguridad - Imagen 2" },
+            { src: seguridadAcceso3, alt: "Seguridad - Imagen 3" }
+          ]
+        },
+      ]
+    },
+    // FIN SECCIÓN REPARACIONES DE URGENCIA
     {
       title: "Trabajos de Electricidad",
       description: "Realizamos instalaciones eléctricas, reparaciones y mejoras en sistemas de iluminación, siempre con la máxima seguridad.",
@@ -161,10 +188,10 @@ const Gallery = () => {
       ]
     },
   ];
-  // ----------------------------------------
 
   return (
     <div className="min-h-screen bg-background pt-20">
+      
       {/* Header Section */}
       <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6 text-center">
