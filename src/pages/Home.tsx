@@ -22,7 +22,7 @@ import imageAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpeg";
 import electricidadCuadroElectricoDespues from "@/assets/electricidad-cuadro-electrico-despues.jpeg";
 import fontaneriaBombaDespues from "@/assets/fontaneria-bomba-despues.jpeg";
 import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpeg";
-import imageAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpeg"; // Mantenemos las importaciones originales si se usan
+// import imageAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpeg"; // Eliminada la importación si no se usa aquí
 
 // Rutas directas existentes para la Reforma (Prioridad Baja)
 const facadeBefore = "/lovable-uploads/65f44365-8ec1-4dc4-8bfd-1c035df281bf.png";
@@ -159,6 +159,7 @@ const Home = () => {
               nuestro compromiso más importante.
             </p>
           </div>
+          
         </div>
       </section>
 
@@ -200,7 +201,6 @@ const Home = () => {
               </CardContent>
             </Card>
 
-            {/* Card Reparaciones Urgentes - Mantenemos esta sección con sus imágenes, que ya está bien orientada */}
             <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
               <CardContent className="p-8 text-center">
                 <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
@@ -211,29 +211,6 @@ const Home = () => {
                 </h3>
                 <p className="text-muted-foreground mb-4">
                   De averías inesperadas a pequeños arreglos, nuestro equipo resuelve problemas de humedades, persianas, cerraduras y más, de forma rápida y eficiente.
-                </p>
-                
-                {/* Contenedor de las 3 imágenes */}
-                <div className="flex justify-center gap-2 mt-4">
-                  {/* Se usa la misma imagen de acceso en la posición 1 y 2, pero no pasa nada */}
-                  {[imageAcceso1, imageAcceso2, imageAcceso1].map((imgSrc, index) => (
-                    <ImageLightbox
-                      key={index}
-                      src={imgSrc}
-                      alt={`Seguridad Preventiva Acceso ${index + 1}`}
-                      className="w-1/3 overflow-hidden rounded-md shadow-md cursor-pointer transition-transform duration-300 hover:scale-[1.03]"
-                    >
-                      <img
-                        src={imgSrc}
-                        alt={`Seguridad Preventiva Acceso ${index + 1}`}
-                        className="w-full h-auto object-cover"
-                        onClick={() => openModal(imgSrc)}
-                      />
-                    </ImageLightbox>
-                  ))}
-                </div>
-                <p className="text-xs text-muted-foreground/70 mt-2">
-                  Ejemplos de nuestros servicios urgentes
                 </p>
               </CardContent>
             </Card>
