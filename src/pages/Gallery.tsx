@@ -38,6 +38,7 @@ import reparacionEscalonPaso4 from "@/assets/reparacion-escalon-paso4.jpeg";
 import reparacionGrietaParedAntes from "@/assets/reparacion-grieta-pared-antes.jpeg";
 import reparacionGrietaParedDespues from "@/assets/reparacion-grieta-pared-despues.jpeg";
 
+// 💡 CORRECCIÓN MÍNIMA: Cambio de .jpg a .jpeg para que las imágenes se muestren
 import seguridadAcceso1 from "@/assets/seguridad-preventiva-acceso1.jpeg";
 import seguridadAcceso2 from "@/assets/seguridad-preventiva-acceso2.jpeg";
 import seguridadAcceso3 from "@/assets/seguridad-preventiva-acceso3.jpeg";
