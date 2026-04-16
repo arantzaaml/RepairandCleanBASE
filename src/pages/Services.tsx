@@ -69,11 +69,11 @@ const Services = () => {
       
       {/* Header Section */}
       <section className="pt-32 pb-16 bg-hero-gradient" aria-labelledby="services-header-title">
-        <div className="container mx-auto px-6 text-center">
-          <h1 id="services-header-title" className="text-5xl md:text-6xl font-bold text-white mb-6">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <h1 id="services-header-title" className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
             {t("services_header_title")}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg md:text-2xl text-white/90 max-w-3xl mx-auto px-2">
             {t("services_header_subtitle")}
           </p>
         </div>
@@ -81,9 +81,9 @@ const Services = () => {
 
       {/* Services Grid */}
       <section className="py-16" aria-labelledby="services-grid-title">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <h2 id="services-grid-title" className="sr-only">{t("services_grid_title")}</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {services.map((service, index) => (
               <Card key={index} className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2">
                 <CardHeader className="text-center pb-4">

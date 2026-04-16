@@ -188,11 +188,11 @@ const Gallery = () => {
       
       {/* Header Section */}
       <section className="pt-32 pb-16 bg-hero-gradient" aria-labelledby="gallery-header-title">
-        <div className="container mx-auto px-6 text-center">
-          <h1 id="gallery-header-title" className="text-5xl md:text-6xl font-bold text-white mb-6">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <h1 id="gallery-header-title" className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
             {t("gallery_header_title")}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg md:text-2xl text-white/90 max-w-3xl mx-auto px-2">
             {t("gallery_header_subtitle")}
           </p>
         </div>
@@ -200,7 +200,7 @@ const Gallery = () => {
 
       {/* Gallery Section */}
       <section className="py-16" aria-labelledby="gallery-grid-title">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <h2 id="gallery-grid-title" className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
             {t("gallery_grid_title")}
           </h2>
@@ -259,17 +259,17 @@ const Gallery = () => {
             <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
               {t("gallery_cta_subtitle")}
             </p>
-            <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4">
               <Button
                 size="lg"
-                className="hover:-translate-y-1 transition-transform"
+                className="hover:-translate-y-1 transition-transform w-full sm:w-auto"
                 onClick={() => {
                   localStorage.setItem('scrollToForm', 'true');
                   navigate('/');
                 }}>
                 {t("request_budget")}
               </Button>
-              <Button asChild variant="outline" size="lg" className="hover:-translate-y-1 transition-transform">
+              <Button asChild variant="outline" size="lg" className="hover:-translate-y-1 transition-transform w-full sm:w-auto">
                 <Link to="/services">
                   {t("see_all_services")}
                 </Link>

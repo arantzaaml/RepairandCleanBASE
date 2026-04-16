@@ -116,17 +116,17 @@ const Home = () => {
             <div className="absolute inset-0 bg-hero-gradient opacity-80"></div>
           </ImageLightbox>
         </div>
-        <div className="relative container mx-auto px-6 text-center">
-          <h1 id="hero-title" className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight md:leading-relaxed">
+        <div className="relative container mx-auto px-4 sm:px-6 text-center">
+          <h1 id="hero-title" className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             {t("hero_title")}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto px-2">
             {t("hero_subtitle")}
           </p>
           <Button
             variant="cta"
             size="lg"
-            className="text-lg px-8 py-4 hover:-translate-y-1 transition-transform"
+            className="text-lg px-6 sm:px-8 py-3 sm:py-4 hover:-translate-y-1 transition-transform w-full sm:w-auto"
             onClick={() => {
               if (formRef.current) {
                 formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -192,11 +192,11 @@ const Home = () => {
             </Card>
           </div>
           
-          <div className="text-center mt-12 space-x-4">
-            <Button asChild variant="outline" size="lg" className="hover:-translate-y-1 transition-transform">
+          <div className="text-center mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4">
+            <Button asChild variant="outline" size="lg" className="hover:-translate-y-1 transition-transform w-full sm:w-auto">
               <Link to="/services">{t("see_all_services")}</Link>
             </Button>
-            <Button asChild variant="default" size="lg" className="hover:-translate-y-1 transition-transform">
+            <Button asChild variant="default" size="lg" className="hover:-translate-y-1 transition-transform w-full sm:w-auto">
               <Link to="/gallery">{t("see_full_gallery")}</Link>
             </Button>
           </div>
