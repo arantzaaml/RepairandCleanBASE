@@ -109,17 +109,17 @@ const Services = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="border-t pt-4 flex justify-between items-center">
+                  <div className="border-t pt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <span className="text-2xl font-bold text-primary">
                       {service.price}
                     </span>
                     <Button 
-                      className="hover:-translate-y-1 transition-transform" 
+                      className="hover:-translate-y-1 transition-transform w-full sm:w-auto h-auto py-3 px-4 text-sm" 
                       onClick={() => {
                         localStorage.setItem('scrollToForm', 'true');
                         navigate('/');
                       }}>
-                      {t("request_budget")}
+                      <span className="whitespace-normal text-center">{t("request_budget")}</span>
                     </Button>
                   </div>
                 </CardContent>
@@ -138,18 +138,18 @@ const Services = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             {t("gallery_cta_subtitle")}
           </p>
-          <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button 
               size="lg" 
-              className="hover:-translate-y-1 transition-transform"
+              className="hover:-translate-y-1 transition-transform w-full sm:w-auto h-auto py-4 sm:py-2"
               onClick={() => {
                 localStorage.setItem('scrollToForm', 'true');
                 navigate('/');
               }}>
-              {t("request_budget")}
+              <span className="whitespace-normal text-center">{t("request_budget")}</span>
             </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link to="/gallery">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-auto py-4 sm:py-2">
+              <Link to="/gallery" className="whitespace-normal text-center">
                 {t("see_works")}
               </Link>
             </Button>

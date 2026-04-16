@@ -108,13 +108,11 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 overflow-hidden md:pt-48" aria-labelledby="hero-title">
         <div className="absolute inset-0">
-          <ImageLightbox src={heroImage} alt="Reformas y reparaciones integrales a nivel local - Repair & Clean" className="w-full h-full">
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${heroImage})` }}
-            />
-            <div className="absolute inset-0 bg-hero-gradient opacity-80"></div>
-          </ImageLightbox>
+          <div
+            className="w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroImage})` }}
+          />
+          <div className="absolute inset-0 bg-hero-gradient opacity-80"></div>
         </div>
         <div className="relative container mx-auto px-4 sm:px-6 text-center">
           <h1 id="hero-title" className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -192,12 +190,12 @@ const Home = () => {
             </Card>
           </div>
           
-          <div className="text-center mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4">
-            <Button asChild variant="outline" size="lg" className="hover:-translate-y-1 transition-transform w-full sm:w-auto">
-              <Link to="/services">{t("see_all_services")}</Link>
+          <div className="text-center mt-12 flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4">
+            <Button asChild variant="outline" size="lg" className="hover:-translate-y-1 transition-transform w-full sm:w-auto h-auto py-4 sm:py-2">
+              <Link to="/services" className="whitespace-normal text-center">{t("see_all_services")}</Link>
             </Button>
-            <Button asChild variant="default" size="lg" className="hover:-translate-y-1 transition-transform w-full sm:w-auto">
-              <Link to="/gallery">{t("see_full_gallery")}</Link>
+            <Button asChild variant="default" size="lg" className="hover:-translate-y-1 transition-transform w-full sm:w-auto h-auto py-4 sm:py-2">
+              <Link to="/gallery" className="whitespace-normal text-center">{t("see_full_gallery")}</Link>
             </Button>
           </div>
         </div>
